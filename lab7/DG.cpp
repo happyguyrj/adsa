@@ -107,9 +107,44 @@ int int main(int argc, char const *argv[]) {
                   break;
           case 6: cout<<"Graph has "<<graph.vertices()<<" vertice(s)"<<endl;
                   break;
+
+          case 7: cout<<"Enter vertex: ";
+                  cin>>source;
+                  if(source<graph.vertices()){
+                    cout<<"InDegree of "<<source<<" is "<<graph.indegree()<<end;
+                  }
+                  break;
+
+          case 8: cout<<"Enter vertex: ";
+                  cin>>source;
+                  if(source<graph.vertices()){
+                    cout<<"OutDegree of "<<source<<" is "<<graph.outdegree()<<end;
+                  }
+                  break;
+
+          case 9: cout<<"Enter vertex: ";
+                  cin>>source;
+                  if(source<graph.vertices()){
+                    cout<<"BFS of "<<source<<" is "<<end;
+                    graph.bfs(work,source);
+                  }
+                  break;
+
+          case 10: cout<<"Enter vertex: ";
+                  cin>>source;
+                  if(source<graph.vertices()){
+                    cout<<"DFS of "<<source<<" is "<<end;
+                    graph.dfs(work,source);
+                  }
+                  break;
+
+          case 11: return 0;
+
+          default: cout<<"Enter valid number"<<endl
         }
       }
     }
   }
+
   return 0;
 }
