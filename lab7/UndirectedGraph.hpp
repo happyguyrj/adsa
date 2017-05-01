@@ -7,7 +7,7 @@
 #ifndef UNDIRECTED_GRAPH
 #define UNDIRECTED_GRAPH 1
 /*
- * A class to represent an UnUnDirectedGraph
+ * A class to represent an UnDirectedGraph
  * Subclasses AbstractGraph
  */
  #include ".stack.hpp"
@@ -15,21 +15,23 @@
  #include "AdjacencyList.hpp"
  #include "AbstractGraph.hpp"
 
-class UnUnDirectedGraph : AbstractGraph {
+class UnDirectedGraph : AbstractGraph {
 
  private:
   AdjacencyList graphlist;
+  AdjacencyMatrix graphmatrix;
+  char mode;
 
  public:
   /*
-   * Constructor: UnUnDirectedGraph
+   * Constructor: UnDirectedGraph
    *
    * Parameters: mode
    * Used to decide which representation to use
    * 'm' for AdjacencyMatrix
    * 'l' for AdjacencyList
    */
-  UnUnDirectedGraph(int vertices);
+  UnDirectedGraph(int vertices, char mode);
   /*
    * Returns the degree of the vertex.
    */
@@ -46,48 +48,102 @@ class UnUnDirectedGraph : AbstractGraph {
 };
 
 template<class T>
-  UnDirectedGraph<T>::UnDirectedGraph(int numVertices){
-    graphlist.resAdjacencyList(numVertices)
+  UnDirectedGraph<T>::UnDirectedGraph(int numVertices,mode){
+    if(mode=='m'){
+      graphmatrix.resAdjacencyMatrix(numVertices);
+    }
+    else if(mode == 'l'){
+      graphlist.resAdjacencyList(numVertices);
+    }
   }
 
 template<class T>
-  void UnDirectedGraph<T>::degree(int i){
-    graphlist.outdegree(i);
+  void UnDirectedGraph<T>::indegree(int i){
+    if(mode=='m'){
+      return graphmatrix.indegree(i);
+    }
+    else if(mode == 'l'){
+      return graphlist.indegree(i);
+    }
+  }
+
+template<class T>
+  void UnDirectedGraph<T>::outdegree(int i){
+    if(mode=='m'){
+      return graphmatrix.outdegree(i);
+    }
+    else if(mode == 'l'){
+      return graphlist.outdegree(i);
+    }
   }
 
 template<class T>
   void UnDirectedGraph<T>::edgeExists(int i, int j){
-    graphlist.edgeExists(i,j);
+    if(mode=='m'){
+      return graphmatrix.edgeExists(i,j);
+    }
+    else if(mode == 'l'){
+      return graphlist.edgeExists(i,j);
+    }
   }
 
 template<class T>
   void UnDirectedGraph<T>::vertices(){
-    graphlist.vertices();
+    if(mode=='m'){
+      return graphmatrix.vertices();
+    }
+    else if(mode == 'l'){
+      return graphlist.vertices();
+    }
   }
 
 template<class T>
   void UnDirectedGraph<T>::edges(){
-    graphlist.edges()/2;
+    if(mode=='m'){
+      return graphmatrix.edges()/2;
+    }
+    else if(mode == 'l'){
+     return graphlist.edges()/2;
+    }
   }
 
 template<class T>
   void UnDirectedGraph<T>::add(int i, int j){
-    graphlist.add(i,j);
-    graphlist.add(j,i);
+    if(mode=='m'){
+      graphmatrix.add(i,j);
+      graphmatrix.add(j,i);
+    }
+    else if(mode == 'l'){
+     graphlist.add(i,j);
+     graphlist.add(j,i);
+    }
+  }
 
 template<class T>
   void UnDirectedGraph<T>::remove(int i, int j){
-    graphlist.remove(i,j);
-    graphlist.remove(j,i);
+    if(mode=='m'){
+      graphmatrix.remove(i,j);
+      graphmatrix.remove(j,i);
+    }
+    else if(mode == 'l'){
+      graphlist.remove(i,j);
+      graphlist.remove(j,i);
+    }
   }
 
 template<class T>
   void UnDirectedGraph<T>::print(){
-    graphlist.print();
+    if(mode=='m'){
+      graphmatrix.print();
+    }
+    else if(mode == 'l'){
+      graphlist.print();
+    }
   }
 
 template<class T>
   void UnDirectedGraph<T>::dfs(void (*work)(int&),int src){
+
     int ver = this->vertices();             // number of vertices
     Color colour[n];                        //colour of node
 
@@ -117,8 +173,10 @@ template<class T>
     }
   }
 
+
 template<class T>
   void UnDirectedGraph<T>::bfs(void (*work)(int&),int src){
+
     int ver = this->vertices();             // number of vertices
     Color colour[n];                        //colour of node
 
@@ -148,5 +206,4 @@ template<class T>
       colour[i]=BLACK;
     }
   }
-
 #endif /* ifndef UNDIRECTED_GRAPH */
