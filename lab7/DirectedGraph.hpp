@@ -18,6 +18,8 @@ class DirectedGraph : AbstractGraph {
 
  private:
    AdjacencyList graphlist;
+   AdjacencyMatrix graphmatrix;
+   char mode;
 
  public:
   /*
@@ -28,7 +30,7 @@ class DirectedGraph : AbstractGraph {
    * 'm' for AdjacencyMatrix
    * 'l' for AdjacencyList
    */
-  DirectedGraph(int numVertices);
+  DirectedGraph(int numVertices, char mode);
   /*
    * Function: indegree
    * Returns the indegree of a vertex
@@ -51,52 +53,98 @@ class DirectedGraph : AbstractGraph {
 };
 
 template<class T>
-  DirectedGraph<T>::DirectedGraph(int numVertices){
-    graphlist.resAdjacencyList(numVertices)
+  DirectedGraph<T>::DirectedGraph(int numVertices,mode){
+    if(mode=='m'){
+      graphmatrix.resAdjacencyMatrix(numVertices);
+    }
+    else if(mode == 'l'){
+      graphlist.resAdjacencyList(numVertices);
+    }
   }
 
 template<class T>
   void DirectedGraph<T>::indegree(int i){
-    graphlist.indegree(i);
+    if(mode=='m'){
+      return graphmatrix.indegree(i);
+    }
+    else if(mode == 'l'){
+      return graphlist.indegree(i);
+    }
   }
 
 template<class T>
   void DirectedGraph<T>::outdegree(int i){
-    graphlist.outdegree(i);
+    if(mode=='m'){
+      return graphmatrix.outdegree(i);
+    }
+    else if(mode == 'l'){
+      return graphlist.outdegree(i);
+    }
   }
 
 template<class T>
   void DirectedGraph<T>::edgeExists(int i, int j){
-    graphlist.edgeExists(i,j);
+    if(mode=='m'){
+      return graphmatrix.edgeExists(i,j);
+    }
+    else if(mode == 'l'){
+      return graphlist.edgeExists(i,j);
+    }
   }
 
 template<class T>
   void DirectedGraph<T>::vertices(){
-    graphlist.vertices();
+    if(mode=='m'){
+      return graphmatrix.vertices();
+    }
+    else if(mode == 'l'){
+      return graphlist.vertices();
+    }
   }
 
 template<class T>
   void DirectedGraph<T>::edges(){
-    graphlist.edges();
+    if(mode=='m'){
+      return graphmatrix.edges();
+    }
+    else if(mode == 'l'){
+     return graphlist.edges();
+    }
   }
 
 template<class T>
   void DirectedGraph<T>::add(int i, int j){
-    graphlist.add(i,j);
+    if(mode=='m'){
+      graphmatrix.add(i,j);
+    }
+    else if(mode == 'l'){
+     graphlist.add(i,j);
+    }
   }
 
 template<class T>
   void DirectedGraph<T>::remove(int i, int j){
-    graphlist.remove(i,j);
+    if(mode=='m'){
+      graphmatrix.remove(i,j);
+    }
+    else if(mode == 'l'){
+      graphlist.remove(i,j);
+    }
   }
 
 template<class T>
   void DirectedGraph<T>::print(){
-    graphlist.print();
+    if(mode=='m'){
+      graphmatrix.print();
+    }
+    else if(mode == 'l'){
+      graphlist.print();
+    }
   }
 
 template<class T>
   void DirectedGraph<T>::dfs(void (*work)(int&),int src){
+
     int ver = this->vertices();             // number of vertices
     Color colour[n];                        //colour of node
 
@@ -126,8 +174,10 @@ template<class T>
     }
   }
 
+
 template<class T>
   void DirectedGraph<T>::bfs(void (*work)(int&),int src){
+
     int ver = this->vertices();             // number of vertices
     Color colour[n];                        //colour of node
 
