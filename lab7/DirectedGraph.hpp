@@ -1,5 +1,16 @@
+// Purpose: ADSA lab
+// Author: Raul Jain
+// Date of Creation: 30 april 2017
+//type: library file
+// Bugs:
+
 #ifndef DIRECTED_GRAPH
 #define DIRECTED_GRAPH 1
+
+#include ".stack.hpp"
+#include "queue.hpp"
+#include "AdjacencyMatrix.hpp"
+#include "AdjacencyList.hpp"
 #include "AbstractGraph.hpp"
 /*
  * A class to represent a directed graph.
