@@ -15,7 +15,7 @@ class GraphAdjacencyBase {
 	 * Function: edgeExists
 	 * Returns true if an edge exists between vertices i and j, false otherwise.
 	 */
-  virtual bool edgeExits(int i, int j) = 0;
+  virtual bool edgeExists(int i, int j) = 0;
 	/*
 	 * Function: vertices
 	 * Returns the number of vertices in the adjacency structure.
@@ -40,6 +40,7 @@ class GraphAdjacencyBase {
 	 * Function: degree
 	 * Returns the degree of the vertex i
 	 */
-  virtual int degree(int i) = 0;
+  virtual int indegree(int i) = 0;
+	virtual int outdegree(int i) = 0;
 };
 #endif /* ifndef GRAPH_ADJACENCY_BAG */

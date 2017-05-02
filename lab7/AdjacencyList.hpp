@@ -28,7 +28,7 @@ using namespace std;
     AdjacencyList();
     LinearList< list <int> >  AdjList();
     ~AdjacencyList();
-    void resizeAdList(int V);
+    void resAdjacencyList(int V);
     bool edgeExists(int i, int j);
     int vertices();
     int edges();
@@ -56,7 +56,7 @@ using namespace std;
     }
 
 
-    void AdjacencyList::resizeAdList(int V){
+    void AdjacencyList::resAdjacencyList(int V){
       AdList.resize(V);
       v=V;
       e=0;

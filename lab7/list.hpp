@@ -8,9 +8,12 @@ using namespace std;
   template<class T>
     class Node
     {
-        T data;
-        Node<T> * next;
+
     public:
+
+      T data;
+      Node<T> * next;
+      
         Node(){}            //Default Constructor
         T getdata();        //getting data
         void setdata(const T &r);   //changing data
@@ -47,10 +50,13 @@ using namespace std;
   template<class T>
       class list
       {
-        Node<T> * head;
-        int len;
+
 
         public:
+
+          Node<T> * head;
+          int len;
+
           list()
           {
               head=NULL;

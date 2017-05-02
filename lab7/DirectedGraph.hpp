@@ -13,7 +13,7 @@
 #include "AdjacencyMatrix.hpp"
 #include "AbstractGraph.hpp"
 /*
- * A class to represent a directed graph.
+ * A class to modeesent a directed graph.
  */
 class DirectedGraph : AbstractGraph {
 
@@ -28,7 +28,7 @@ private:
    * Constructor: DirectedGraph
    *
    * Parameters: mode
-   * Used to decide which representation to use
+   * Used to decide which modeesentation to use
    * 'm' for AdjacencyMatrix
    * 'l' for AdjacencyList
    */
@@ -50,8 +50,8 @@ private:
   void add(int i, int j);
   void remove(int i, int j);
   void print();
-  void dfs(void (*work)(int&),int src);
-  void bfs(void (*work)(int&),int src);
+  LinearList<DFSNode> dfs(void (*work)(int&),int src);
+  LinearList<BFSNode> bfs(void (*work)(int&),int src);
 };
 
 
@@ -85,7 +85,7 @@ private:
   }
 
 
-  void DirectedGraph  ::edgeExists(int i, int j){
+  bool DirectedGraph  ::edgeExists(int i, int j){
     if(mode=='m'){
       return graphmatrix.edgeExists(i,j);
     }
@@ -144,69 +144,190 @@ private:
     }
   }
 
-//
-//   void DirectedGraph  ::dfs(void (*work)(int&),int src){
-//
-//     int ver = this->vertices();             // number of vertices
-//     Color colour[ver];                        //colour of node
-//
-//     for(i=0;i<ver;i++){
-//       colour[i] = WHITE;
-//     }
-//
-//     stack<int> stack;
-//     stack.push(src);
-//
-//     while (!stack.empty()) {
-//       int j=stack.pop();
-//       if(colour[j]==WHITE){
-//         work(j);
-//         colour[j]=GRAY;
-//
-//         listnode<int>* temp = (graphlist.AdjList()[i].getfirst());
-//         while (temp!=NULL) {
-//           int k = temp->getdata();
-//           if(colour[k]==WHITE){
-//             stack.push(k);
-//           }
-//           temp=temp->getlink();
-//         }
-//         colour[i]=BLACK;
-//       }
-//     }
-//   }
+
+LinearList<DFSNode> DirectedGraph::dfs(void (*work)(int&),int src)
+{
+      int n=this->vertices(),time=0;
+      LinearList<DFSNode> tree(n);
+
+      for(int i=0;i<n;i++)
+      {
+        tree[i].col=WHITE;
+        tree[i].pred=-1;
+      }
+
+      stack<int> s;
+      s.push(src);
+
+        while(!s.empty())
+        {
+           int i=s.top();
+           if(tree[i].col==BLACK)
+           {
+            s.pop();
+           }
+           else if(tree[i].col==GRAY)
+           {
+            s.pop();
+            tree[i].col=BLACK;
+            time++;
+            tree[i].ft=time;
+           }
+           else if(tree[i].col==WHITE)
+           {
+               tree[i].col=GRAY;
+               work(i);
+               time++;
+               tree[i].dt=time;
+
+                if(mode=='m')
+                {
+                     for(int j=0;j<n;j++)
+                     {
+                      if(this->edgeExists(i,j) && tree[j].col==WHITE )
+                      {
+                        s.push(j);
+                        tree[j].pred=i;
+                      }
+                     }
+                }
+                else
+                  {
+                    listnode<int>* tmp=(graphlist.AdjList()[i].getfirst());
+                    while(tmp!=NULL)
+                    {
+                      int j=tmp->getdata();
+                      if(tree[j].col==WHITE)
+                      {
+                        s.push(j);
+                        tree[j].pred=i;
+                      }
+                      tmp=tmp->getlink();
+                    }
+
+                  }
+            }
+          }
+
+            for(int k=0;k<n;k++)
+            {
+
+            if(tree[k].col==WHITE)
+            {
+              s.push(k);
+            }
+
+           while(!s.empty())
+           {
+           int i=s.top();
+
+              if(tree[i].col==BLACK) s.pop();
+
+              else if(tree[i].col==GRAY)
+              {
+              s.pop();
+              tree[i].col=BLACK;
+              time++;
+              tree[i].ft=time;
+                }
+
+              else if(tree[i].col==WHITE)
+              {
+                  work(i);
+                  tree[i].col=GRAY;
+                  time++;
+                  tree[i].dt=time;
 
 
-//
-//   void DirectedGraph  ::bfs(void (*work)(int&),int src){
-//
-//     int ver = this->vertices();             // number of vertices
-//     Color colour[ver];                        //colour of node
-//
-//     for(int i=0;i<ver;i++){
-//       colour[i] = WHITE;
-//     }
-//
-//     queue<int> queue;
-//     stack.push(src);
-//
-//     colour[src]=GRAY;
-//     work(src);
-//
-//     while (!queue.empty()) {
-//       int j=queue.pop();
-//
-//       listnode <int>* temp = (graphlist.AdjList()[j].getfirst());
-//       while (temp!=NULL){
-//         int k=temp->getdata();
-//         if(colour[k]==WHITE){
-//           queue.push(k);
-//           colour[k]=GRAY;
-//           work(k);
-//           temp=temp->getlink();
-//         }
-//       }
-//       colour[j]=BLACK;
-//     }
-//   }
+                if(mode=='m')
+                {
+                     for(int j=0;j<n;j++)
+                     {
+                      if(this->edgeExists(i,j) && tree[j].col==WHITE )
+                      {
+                        s.push(j);
+                        tree[j].pred=i;
+                      }
+                     }
+                  }
+                  else
+                  {
+                    listnode<int>* tmp=(graphlist.AdjList()[i].getfirst());
+                    while(tmp!=NULL)
+                    {
+                      int j=tmp->getdata();
+                      if(tree[j].col==WHITE)
+                      {
+                        s.push(j);
+                        tree[j].pred=i;
+                    }
+                      tmp=tmp->getlink();
+                    }
+                  }
+             }
+          }
+        }
+return tree;
+}
+
+LinearList<BFSNode> DirectedGraph::bfs(void (*work)(int&),int src)
+{
+            int n=this->vertices();
+
+      LinearList<BFSNode> tree(n);
+      for(int i=0;i<n;i++)
+      {
+        tree[i].col=WHITE;
+        tree[i].pred=-1;
+        tree[i].d=0;
+
+      }
+
+      queue<int> q;
+      q.push(src);
+      tree[src].col=GRAY;
+      work(src);
+      while(!q.empty())
+      {
+       int i=q.pop();
+       tree[i].col=BLACK;
+  if(mode=='m')
+    {
+        for(int j=0;j<n;j++)
+        {
+          if(this->edgeExists(i,j) && tree[j].col==WHITE)
+          {
+            q.push(j);
+            tree[j].col=GRAY;
+
+            tree[j].d=tree[i].d+1;
+            tree[j].pred=i;
+          work(j);
+          }
+        }
+      }
+      else
+      {
+        listnode<int>* tmp=(graphlist.AdjList()[i].getfirst());
+            while(tmp!=NULL)
+            {
+              int j=tmp->getdata();
+              if(tree[j].col==WHITE)
+              {
+                q.push(j);
+                tree[j].col=GRAY;
+                tree[j].d=tree[i].d+1;
+                tree[j].pred=i;
+                work(j);
+              }
+              tmp=tmp->getlink();
+            }
+      }
+
+
+      }
+      return tree;
+}
+
+
 #endif /* ifndef DIRECTED_GRAPH */

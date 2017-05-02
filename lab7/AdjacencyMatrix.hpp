@@ -18,7 +18,7 @@ private:
 public:
   AdjacencyMatrix();
   ~AdjacencyMatrix();
-  void resizeAdjMatrix(int V);
+  void resAdjacencyMatrix(int V);
   bool edgeExists(int i, int j);
   int vertices();
   int edges();
@@ -41,7 +41,7 @@ public:
   }
 
 
-  void  AdjacencyMatrix::resizeAdjMatrix(int V){
+  void  AdjacencyMatrix::resAdjacencyMatrix(int V){
     AdMatrix.resize(V);
     for(int k=0;k<V;k++){
       AdMatrix[k].resize(V);
