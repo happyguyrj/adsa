@@ -74,13 +74,11 @@ template<class T>
   void UnDirectedGraph<T>::add(int i, int j){
     graphlist.add(i,j);
     graphlist.add(j,i);
-  }
 
 template<class T>
   void UnDirectedGraph<T>::remove(int i, int j){
     graphlist.remove(i,j);
     graphlist.remove(j,i);
-
   }
 
 template<class T>
@@ -90,11 +88,65 @@ template<class T>
 
 template<class T>
   void UnDirectedGraph<T>::dfs(void (*work)(int&),int src){
+    int ver = this->vertices();             // number of vertices
+    Color colour[n];                        //colour of node
+
+    for(i=0;i<ver;i++){
+      colour[i] = WHITE;
+    }
+
+    stack<int> stack;
+    s.push(src);
+
+    while (!stack.empty()) {
+      int j=stack.pop();
+      if(colour[j]==WHITE){
+        work(j);
+        colour[j]=GRAY;
+
+        listnode<int>* temp = (graphlist.AdjList()[i].getfirst());
+        while (temp!=NULL) {
+          int k = temp->getdata();
+          if(colour[k]==WHITE){
+            stack.push(k);
+          }
+          temp=temp->getlink();
+        }
+        colour[i]=BLACK;
+      }
+    }
   }
 
 template<class T>
   void UnDirectedGraph<T>::bfs(void (*work)(int&),int src){
+    int ver = this->vertices();             // number of vertices
+    Color colour[n];                        //colour of node
+
+    for(i=0;i<ver;i++){
+      colour[i] = WHITE;
+    }
+
+    queue<int> queue;
+    s.push(src);
+
+    colour[src]=GRAY;
+    work(src);
+
+    while (!queue.empty()) {
+      int j=queue.pop();
+
+      listnode<int>* temp = (graphlist.AdjList()[j].getfirst());
+      while (temp!=NULL){
+        int k=temp->getdata();
+        if(colour[k]==WHITE){
+          queue.push(k);
+          colour[k]=GRAY;
+          work(k);
+        }
+        temp=temp->getlink();
+      }
+      colour[i]=BLACK;
+    }
   }
-}
 
 #endif /* ifndef UNDIRECTED_GRAPH */
