@@ -10,6 +10,7 @@
 #include "stack.hpp"
 #include "queue.hpp"
 #include "AdjacencyList.hpp"
+#include "AdjacencyMatrix.hpp"
 #include "AbstractGraph.hpp"
 /*
  * A class to represent a directed graph.
@@ -93,7 +94,7 @@ private:
   }
 
 
-  void DirectedGraph  ::vertices(){
+  int DirectedGraph  ::vertices(){
     if(mode=='m'){
       return graphmatrix.vertices();
     }
@@ -103,7 +104,7 @@ private:
   }
 
 
-  void DirectedGraph  ::edges(){
+  int DirectedGraph  ::edges(){
     if(mode=='m'){
       return graphmatrix.edges();
     }
@@ -207,5 +208,4 @@ private:
 //       colour[j]=BLACK;
 //     }
 //   }
-}
 #endif /* ifndef DIRECTED_GRAPH */

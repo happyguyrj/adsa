@@ -67,6 +67,7 @@ class LinearList{
 
 		void resize(const int& n);
 		int find(const Item& item);
+		void fill(const Item& item);
 
 
 		void display(){
@@ -138,6 +139,15 @@ template<class Item>
                return element[0];
          }
          return element[i];
+}
+
+template<class Item>
+		void LinearList<Item>::fill(const Item& item)
+		{
+			for(int i=0;i<len;i++)
+			{
+				element[i]=item;
+			}
 }
 
 template<class Item>

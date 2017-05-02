@@ -10,7 +10,7 @@
  * A class to represent an UnDirectedGraph
  * Subclasses AbstractGraph
  */
- #include ".stack.hpp"
+ #include "stack.hpp"
  #include "queue.hpp"
  #include "AdjacencyList.hpp"
  #include "AbstractGraph.hpp"

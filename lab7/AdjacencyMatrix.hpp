@@ -7,7 +7,7 @@
 #include <iostream>
 using namespace std;
 
-template<class T>
+
 class AdjacencyMatrix : public GraphAdjacencyBase {
 
 private:
@@ -29,28 +29,28 @@ public:
   void print();
 };
 
-template<class T>
-  AdjacencyList<T>::AdjacencyMatrix(){
+
+   AdjacencyMatrix ::AdjacencyMatrix(){
     v=0;
     e=0;
   }
 
-template<class T>
-  AdjacencyList<T>::~AdjacencyList(){
+
+   AdjacencyMatrix ::~ AdjacencyMatrix(){
 
   }
 
-template<class T>
-  void AdjacencyList<T>::resizeAdList(int V){
+
+  void  AdjacencyMatrix ::resizeAdjMatrix(int V){
     AdMatrix.resize(V);
     for(int k=0;k<V;k++){
-      AdMatrix[i].resize(V);
-      AdMatrix[i].fill(0);
+      AdMatrix[k].resize(V);
+      AdMatrix[k].fill(0);
     }
   }
 
-template<class T>
-  void AdjacencyList<T>::edgeExists(int i, int j){
+
+  bool  AdjacencyMatrix ::edgeExists(int i, int j){
     if (AdMatrix[i][j]==1) {
       return true;
     }
@@ -58,33 +58,34 @@ template<class T>
       return false;
   }
 
-template<class T>
-  void AdjacencyList<T>::vertices(){
+
+  int  AdjacencyMatrix ::vertices(){
     return v;
   }
 
-template<class T>
-  void AdjacencyList<T>::edges(){
+
+  int  AdjacencyMatrix ::edges(){
     return e;
   }
 
-template<class T>
-  void AdjacencyList<T>::add(int i, int j){
+
+  void  AdjacencyMatrix ::add(int i, int j){
     if(!(this->edgeExists(i,j))){
       AdMatrix[i][j]=1;
       e++;
     }
   }
 
-template<class T>
-  void AdjacencyList<T>::remove(int i, int j){
+
+  void  AdjacencyMatrix ::remove(int i, int j){
     if(this->edgeExists(i,j)){
       AdMatrix[i][j]=0;
       e--;
+    }
   }
 
-template<class T>
-  void AdjacencyList<T>::indegree(int i){
+
+  int  AdjacencyMatrix ::indegree(int i){
     int indeg = 0;
     for (int k = 0; k < v; k++){
         if (edgeExists(i,k)) {
@@ -94,8 +95,8 @@ template<class T>
     return indeg;
   }
 
-template<class T>
-  void AdjacencyList<T>::outdegree(int i){
+
+  int  AdjacencyMatrix ::outdegree(int i){
     int outdeg = 0;
     for (int k = 0; k < v; k++){
         if (edgeExists(i,k)) {
@@ -105,15 +106,14 @@ template<class T>
     return outdeg;
   }
 
-template<class T>
-  void AdjacencyList<T>::print(){
+
+  void  AdjacencyMatrix ::print(){
     for(int k = 0; k<v; k++){
-      for(l=0; l<v; l++){
+      for(int l=0; l<v; l++){
           cout<<AdMatrix[k][l]<<" ";
           cout << endl;
       }
     }
   }
-}
 
 #endif /* ifndef ADJACENCY_MATRIX */

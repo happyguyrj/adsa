@@ -1,12 +1,12 @@
-/* 
+/*
  * stack.hpp
- * 
+ *
  * define your methods in coherence with the following
  * function signatures
- * 
+ *
  * use the abstraction of linked lists
  * to implement the functionality of stacks
- * 
+ *
  */
 
 #ifndef STACK_HPP_
@@ -20,19 +20,19 @@ using namespace std;
         class stack;
         template<class T>
         class queue;
-        template<class T>
-        class list;    
-        
+        //template<class T>
+        //class list;
+
         template<class T>
         class listnode
         {
             friend class stack<T>;
             friend class queue<T>;
-            friend class list<T>;
+            //friend class list<T>;
             private:
             T data;
             listnode *link;
-            public: 
+            public:
             T getdata()
             {
               return data;
@@ -40,7 +40,7 @@ using namespace std;
             listnode* getlink()
             {
               return link;
-            }    
+            }
         };
 
     template<typename T>
@@ -90,9 +90,9 @@ using namespace std;
     void stack<T>::print()
     {
          listnode<T> *tmp=topm;
-        while ( tmp!= NULL ) 
-       
-        {   
+        while ( tmp!= NULL )
+
+        {
             cout<<tmp->data<<" ";
             tmp = tmp->link;
         }
@@ -118,7 +118,7 @@ using namespace std;
          len++;
 
         }
-        
+
         template<class T>
         T stack<T>::pop()
         {
@@ -131,19 +131,19 @@ using namespace std;
             return a;
 
         }
-        
+
         template<class T>
         T stack<T>::top()
         {
             return topm->data;
         }
-        
+
         template<class T>
         int stack<T>::size()
         {
             return len;
         }
-        
+
         template<class T>
         inline bool stack<T>::empty()
         {
@@ -155,7 +155,7 @@ using namespace std;
         stack<T>::~stack()
         {
         listnode<T> *tmp;
-        while (topm) 
+        while (topm)
         {   tmp = topm->link;
             delete topm;
             topm=tmp;

@@ -74,12 +74,12 @@ namespace cs202{
     }
 
 
-    int AdjacencyList  ::edges(){
+    int AdjacencyList::edges(){
       return e;
     }
 
 
-    void AdjacencyList  ::add(int i, int j){
+    void AdjacencyList::add(int i, int j){
       if(!(this->edgeExists(i,j))){
         AdList[i].append(j);
         e++;
@@ -91,13 +91,14 @@ namespace cs202{
       if(this->edgeExists(i,j)){
         AdList[i].remove(j);
         e--;
+      }
     }
 
 
     int AdjacencyList::indegree(int i){
       int indeg = 0;
       for (int k = 0; k < v; k++){
-          if (AdList[j].find(i)) {
+          if (AdList[k].find(i)) {
             indeg++;
           }
       }
