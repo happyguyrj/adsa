@@ -9,7 +9,6 @@
 
 #include ".stack.hpp"
 #include "queue.hpp"
-#include "AdjacencyMatrix.hpp"
 #include "AdjacencyList.hpp"
 #include "AbstractGraph.hpp"
 /*

@@ -1,10 +1,20 @@
+// Purpose: ADSA lab
+// Author: Raul Jain
+// Date of Creation: 30 april 2017
+//type: library file
+// Bugs:
+
 #ifndef UNDIRECTED_GRAPH
 #define UNDIRECTED_GRAPH 1
 /*
  * A class to represent an UndirectedGraph
  * Subclasses AbstractGraph
  */
-#include "AbstractGraph.hpp"
+ #include ".stack.hpp"
+ #include "queue.hpp"
+ #include "AdjacencyList.hpp"
+ #include "AbstractGraph.hpp"
+
 class UndirectedGraph : AbstractGraph {
  public:
   /*
