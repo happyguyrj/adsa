@@ -18,8 +18,9 @@
 class DirectedGraph : AbstractGraph {
 
 private:
-   AdjacencyList graphlist;
+
    AdjacencyMatrix graphmatrix;
+   AdjacencyList graphlist;
    char mode;
 
  public:
@@ -64,7 +65,7 @@ private:
   }
 
 
-  void DirectedGraph  ::indegree(int i){
+  int DirectedGraph  ::indegree(int i){
     if(mode=='m'){
       return graphmatrix.indegree(i);
     }
@@ -74,7 +75,7 @@ private:
   }
 
 
-  void DirectedGraph  ::outdegree(int i){
+  int DirectedGraph  ::outdegree(int i){
     if(mode=='m'){
       return graphmatrix.outdegree(i);
     }

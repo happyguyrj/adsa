@@ -4,7 +4,7 @@
 #include <string.h>
 using namespace std;
 
-namespace cs202{
+
 template<class Item>
 class LinearList{
 	private:
@@ -206,7 +206,6 @@ template<class Item>
 		element[i+1] = element[i];
 	element[k+1] = x;
 	len++;
-}
 }
 
 #endif

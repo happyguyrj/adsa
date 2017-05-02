@@ -30,18 +30,18 @@ public:
 };
 
 
-   AdjacencyMatrix ::AdjacencyMatrix(){
+   AdjacencyMatrix::AdjacencyMatrix(){
     v=0;
     e=0;
   }
 
 
-   AdjacencyMatrix ::~ AdjacencyMatrix(){
+   AdjacencyMatrix::~ AdjacencyMatrix(){
 
   }
 
 
-  void  AdjacencyMatrix ::resizeAdjMatrix(int V){
+  void  AdjacencyMatrix::resizeAdjMatrix(int V){
     AdMatrix.resize(V);
     for(int k=0;k<V;k++){
       AdMatrix[k].resize(V);
@@ -50,7 +50,7 @@ public:
   }
 
 
-  bool  AdjacencyMatrix ::edgeExists(int i, int j){
+  bool  AdjacencyMatrix::edgeExists(int i, int j){
     if (AdMatrix[i][j]==1) {
       return true;
     }
@@ -59,17 +59,17 @@ public:
   }
 
 
-  int  AdjacencyMatrix ::vertices(){
+  int  AdjacencyMatrix::vertices(){
     return v;
   }
 
 
-  int  AdjacencyMatrix ::edges(){
+  int  AdjacencyMatrix::edges(){
     return e;
   }
 
 
-  void  AdjacencyMatrix ::add(int i, int j){
+  void  AdjacencyMatrix::add(int i, int j){
     if(!(this->edgeExists(i,j))){
       AdMatrix[i][j]=1;
       e++;
@@ -77,7 +77,7 @@ public:
   }
 
 
-  void  AdjacencyMatrix ::remove(int i, int j){
+  void  AdjacencyMatrix::remove(int i, int j){
     if(this->edgeExists(i,j)){
       AdMatrix[i][j]=0;
       e--;
@@ -85,7 +85,7 @@ public:
   }
 
 
-  int  AdjacencyMatrix ::indegree(int i){
+  int  AdjacencyMatrix::indegree(int i){
     int indeg = 0;
     for (int k = 0; k < v; k++){
         if (edgeExists(i,k)) {
@@ -96,7 +96,7 @@ public:
   }
 
 
-  int  AdjacencyMatrix ::outdegree(int i){
+  int  AdjacencyMatrix::outdegree(int i){
     int outdeg = 0;
     for (int k = 0; k < v; k++){
         if (edgeExists(i,k)) {
@@ -107,7 +107,7 @@ public:
   }
 
 
-  void  AdjacencyMatrix ::print(){
+  void  AdjacencyMatrix::print(){
     for(int k = 0; k<v; k++){
       for(int l=0; l<v; l++){
           cout<<AdMatrix[k][l]<<" ";

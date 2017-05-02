@@ -4,8 +4,7 @@
 #include<iostream>
 
 using namespace std;
-namespace cs202
-{
+
   template<class T>
     class Node
     {
@@ -85,7 +84,7 @@ namespace cs202
           void append(const list<T>& x);
 
 
-          bool find(T val);  
+          bool find(T val);
       };
 
       template<class T>
@@ -127,9 +126,7 @@ namespace cs202
           bool list<T>::find(T val)
           {
               Node<T> *tmp=head;
-              while ( tmp!= NULL )
-
-              {
+              while ( tmp!= NULL ){
                   if(val==tmp->data) {return true;}
                   tmp = tmp->next;
               }
@@ -237,6 +234,5 @@ namespace cs202
             len=len+y.len;
         }
     }
-}
 
 #endif

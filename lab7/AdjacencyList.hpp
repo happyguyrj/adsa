@@ -6,18 +6,17 @@
 
 #include <iostream>
 using namespace std;
+
+#include "seqLinearList.hpp"
+#include "list.hpp"
 #include "GraphAdjacencyBase.hpp"
 
 #ifndef ADJACENCY_LIST
 #define ADJACENCY_LIST 1
 
-#include "seqLinearList.hpp"
-#include "list.hpp"
 
-using namespace cs202;
 using namespace std;
 
-namespace cs202{
   class AdjacencyList : public GraphAdjacencyBase {
 
   private:
@@ -27,7 +26,7 @@ namespace cs202{
 
   public:
     AdjacencyList();
-    LinearList<list<int> >  AdjList();
+    LinearList< list <int> >  AdjList();
     ~AdjacencyList();
     void resizeAdList(int V);
     bool edgeExists(int i, int j);
@@ -41,35 +40,35 @@ namespace cs202{
   };
 
 
-    AdjacencyList  ::AdjacencyList(){
+    AdjacencyList::AdjacencyList(){
       v=0;
       e=0;
     }
 
 
-    LinearList<list<int> > AdjacencyList  ::AdjList(){
+    LinearList< list <int> > AdjacencyList::AdjList(){
       return AdList;
     }
 
 
-    AdjacencyList  ::~AdjacencyList(){
+    AdjacencyList::~AdjacencyList(){
 
     }
 
 
-    void AdjacencyList  ::resizeAdList(int V){
+    void AdjacencyList::resizeAdList(int V){
       AdList.resize(V);
       v=V;
       e=0;
     }
 
 
-    bool AdjacencyList  ::edgeExists(int i, int j){
+    bool AdjacencyList::edgeExists(int i, int j){
       return AdList[i].find(j);
     }
 
 
-    int AdjacencyList  ::vertices(){
+    int AdjacencyList::vertices(){
       return v;
     }
 
@@ -110,14 +109,13 @@ namespace cs202{
     }
 
 
-    void AdjacencyList  ::print(){
+    void AdjacencyList::print(){
       for(int k = 0; k<v; k++){
         cout << k <<" :";
         AdList[k].print();
         cout << endl;
       }
     }
-}
 
 
 #endif /* ifndef ADJACENCY_LIST */
