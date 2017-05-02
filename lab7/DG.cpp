@@ -154,7 +154,7 @@ int int main(int argc, char const *argv[]) {
     cout<<"Enter number of vertices: ";
     cin>>number;
 
-    DirectedGraph graph.(number, mode);
+    DirectedGraph graph(number, mode);
 
     cout<<"Enter Adjacency Matrix: "<<endl;
     for(k=0;k<number;k++){
