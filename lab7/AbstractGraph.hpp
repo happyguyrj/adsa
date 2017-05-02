@@ -1,8 +1,15 @@
+// Purpose: ADSA lab
+// Author: Raul Jain
+// Date of Creation: 30 april 2017
+//type: library file
+// Bugs:
+
 #ifndef ABSTRACT_GRAPH
 #define ABSTRACT_GRAPH 1
 /*
  * An interface to represent any type of Graph
  */
+enum Color{WHITE,GRAY,BLACK};
 class AbstractGraph {
  public:
   /* Destructor:
