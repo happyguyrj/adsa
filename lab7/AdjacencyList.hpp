@@ -4,14 +4,15 @@
 //type: library file
 // Bugs:
 
+#include <iostream>
+using namespace std;
+#include "GraphAdjacencyBase.hpp"
+
 #ifndef ADJACENCY_LIST
 #define ADJACENCY_LIST 1
 
-#include <iostream>
-
-#include "GraphAdjacencyBase.hpp"
+#include "seqLinearList.hpp"
 #include "list.hpp"
-#include "sequencelinearlist.hpp"
 
 using namespace cs202;
 using namespace std;
@@ -27,7 +28,7 @@ namespace cs202{
 
   public:
     AdjacencyList();
-    AdjList();
+    void AdjList();
     ~AdjacencyList();
     void resizeAdList(int V);
     bool edgeExists(int i, int j);
@@ -47,7 +48,7 @@ namespace cs202{
     }
 
   template<class T>
-    AdjacencyList<T>::AdjList(){
+    void AdjacencyList<T>::AdjList(){
       return AdList;
     }
 

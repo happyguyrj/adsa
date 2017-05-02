@@ -7,7 +7,7 @@
 #ifndef DIRECTED_GRAPH
 #define DIRECTED_GRAPH 1
 
-#include ".stack.hpp"
+#include "stack.hpp"
 #include "queue.hpp"
 #include "AdjacencyList.hpp"
 #include "AbstractGraph.hpp"
@@ -16,7 +16,7 @@
  */
 class DirectedGraph : AbstractGraph {
 
- private:
+private:
    AdjacencyList graphlist;
    AdjacencyMatrix graphmatrix;
    char mode;
@@ -52,8 +52,8 @@ class DirectedGraph : AbstractGraph {
   void bfs(void (*work)(int&),int src);
 };
 
-template<class T>
-  DirectedGraph<T>::DirectedGraph(int numVertices,mode){
+  
+  DirectedGraph<T>::DirectedGraph(int numVertices, char mode){
     if(mode=='m'){
       graphmatrix.resAdjacencyMatrix(numVertices);
     }
@@ -62,7 +62,7 @@ template<class T>
     }
   }
 
-template<class T>
+
   void DirectedGraph<T>::indegree(int i){
     if(mode=='m'){
       return graphmatrix.indegree(i);
@@ -72,7 +72,7 @@ template<class T>
     }
   }
 
-template<class T>
+
   void DirectedGraph<T>::outdegree(int i){
     if(mode=='m'){
       return graphmatrix.outdegree(i);
@@ -82,7 +82,7 @@ template<class T>
     }
   }
 
-template<class T>
+
   void DirectedGraph<T>::edgeExists(int i, int j){
     if(mode=='m'){
       return graphmatrix.edgeExists(i,j);
@@ -92,7 +92,7 @@ template<class T>
     }
   }
 
-template<class T>
+
   void DirectedGraph<T>::vertices(){
     if(mode=='m'){
       return graphmatrix.vertices();
@@ -102,7 +102,7 @@ template<class T>
     }
   }
 
-template<class T>
+
   void DirectedGraph<T>::edges(){
     if(mode=='m'){
       return graphmatrix.edges();
@@ -112,7 +112,7 @@ template<class T>
     }
   }
 
-template<class T>
+
   void DirectedGraph<T>::add(int i, int j){
     if(mode=='m'){
       graphmatrix.add(i,j);
@@ -122,7 +122,7 @@ template<class T>
     }
   }
 
-template<class T>
+
   void DirectedGraph<T>::remove(int i, int j){
     if(mode=='m'){
       graphmatrix.remove(i,j);
@@ -132,7 +132,7 @@ template<class T>
     }
   }
 
-template<class T>
+
   void DirectedGraph<T>::print(){
     if(mode=='m'){
       graphmatrix.print();
@@ -142,70 +142,70 @@ template<class T>
     }
   }
 
-template<class T>
-  void DirectedGraph<T>::dfs(void (*work)(int&),int src){
+//
+//   void DirectedGraph<T>::dfs(void (*work)(int&),int src){
+//
+//     int ver = this->vertices();             // number of vertices
+//     Color colour[ver];                        //colour of node
+//
+//     for(i=0;i<ver;i++){
+//       colour[i] = WHITE;
+//     }
+//
+//     stack<int> stack;
+//     stack.push(src);
+//
+//     while (!stack.empty()) {
+//       int j=stack.pop();
+//       if(colour[j]==WHITE){
+//         work(j);
+//         colour[j]=GRAY;
+//
+//         listnode<int>* temp = (graphlist.AdjList()[i].getfirst());
+//         while (temp!=NULL) {
+//           int k = temp->getdata();
+//           if(colour[k]==WHITE){
+//             stack.push(k);
+//           }
+//           temp=temp->getlink();
+//         }
+//         colour[i]=BLACK;
+//       }
+//     }
+//   }
 
-    int ver = this->vertices();             // number of vertices
-    Color colour[n];                        //colour of node
 
-    for(i=0;i<ver;i++){
-      colour[i] = WHITE;
-    }
-
-    stack<int> stack;
-    s.push(src);
-
-    while (!stack.empty()) {
-      int j=stack.pop();
-      if(colour[j]==WHITE){
-        work(j);
-        colour[j]=GRAY;
-
-        listnode<int>* temp = (graphlist.AdjList()[i].getfirst());
-        while (temp!=NULL) {
-          int k = temp->getdata();
-          if(colour[k]==WHITE){
-            stack.push(k);
-          }
-          temp=temp->getlink();
-        }
-        colour[i]=BLACK;
-      }
-    }
-  }
-
-
-template<class T>
-  void DirectedGraph<T>::bfs(void (*work)(int&),int src){
-
-    int ver = this->vertices();             // number of vertices
-    Color colour[n];                        //colour of node
-
-    for(i=0;i<ver;i++){
-      colour[i] = WHITE;
-    }
-
-    queue<int> queue;
-    s.push(src);
-
-    colour[src]=GRAY;
-    work(src);
-
-    while (!queue.empty()) {
-      int j=queue.pop();
-
-      listnode<int>* temp = (graphlist.AdjList()[j].getfirst());
-      while (temp!=NULL){
-        int k=temp->getdata();
-        if(colour[k]==WHITE){
-          queue.push(k);
-          colour[k]=GRAY;
-          work(k);
-        }
-        temp=temp->getlink();
-      }
-      colour[i]=BLACK;
-    }
-  }
+//
+//   void DirectedGraph<T>::bfs(void (*work)(int&),int src){
+//
+//     int ver = this->vertices();             // number of vertices
+//     Color colour[ver];                        //colour of node
+//
+//     for(int i=0;i<ver;i++){
+//       colour[i] = WHITE;
+//     }
+//
+//     queue<int> queue;
+//     stack.push(src);
+//
+//     colour[src]=GRAY;
+//     work(src);
+//
+//     while (!queue.empty()) {
+//       int j=queue.pop();
+//
+//       listnode <int>* temp = (graphlist.AdjList()[j].getfirst());
+//       while (temp!=NULL){
+//         int k=temp->getdata();
+//         if(colour[k]==WHITE){
+//           queue.push(k);
+//           colour[k]=GRAY;
+//           work(k);
+//           temp=temp->getlink();
+//         }
+//       }
+//       colour[j]=BLACK;
+//     }
+//   }
 }
 #endif /* ifndef DIRECTED_GRAPH */
