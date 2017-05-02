@@ -65,6 +65,9 @@ class LinearList{
 		 * */
 		void  insert(const int  k, Item& x);
 
+		void resize(const int& n);
+		int find(const Item& item);
+
 
 		void display(){
 			cout << "Element are: ";
@@ -73,6 +76,30 @@ class LinearList{
 			cout << endl;
 		}
 };
+
+template<class Item>
+		 void LinearList<Item>::resize(const int& n)
+		 {
+
+			if(n > MaxSize)
+			{
+				cout<<"n > capacity_\n";
+				return ;
+			}
+			if(len == 0)
+			{
+				element = new Item[n];
+			}
+			else
+			{
+				Item *temp = new Item[n];
+				for(int i=0;i<len;i++)
+					temp[i] = element[i];
+				delete[] element;
+				element = temp;
+			}
+			len = n;
+		 }
 
 template<class Item>
     LinearList<Item>::LinearList(){
@@ -89,6 +116,14 @@ template<class Item>
 		element[i] = 0;
 		len = 0;
 }
+
+template<typename Item>
+		int LinearList<Item>::find(const Item& item){
+		for(int i=0;i<len;i++){
+			if(element[i] == item)
+			return i;
+		}
+	}
 
 template<class Item>
     LinearList<Item>::~LinearList(){

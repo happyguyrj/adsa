@@ -9,7 +9,8 @@ class GraphAdjacencyBase {
 	/* Destructor:
 	 * releases all resources acquired by the class
 	 */
-  virtual ~GraphAdjacencyBase();
+ public:
+  virtual ~GraphAdjacencyBase(){	}
 	/*
 	 * Function: edgeExists
 	 * Returns true if an edge exists between vertices i and j, false otherwise.

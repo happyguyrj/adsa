@@ -113,14 +113,14 @@ int main(int argc, char const *argv[]) {
           case 7: cout<<"Enter vertex: ";
                   cin>>source;
                   if(source<graphDir.vertices()){
-                    cout<<"InDegree of "<<source<<" is "<<graphDir.indegree()<<endl;
+                    cout<<"InDegree of "<<source<<" is "<<graphDir.indegree(source)<<endl;
                   }
                   break;
 
           case 8: cout<<"Enter vertex: ";
                   cin>>source;
                   if(source<graphDir.vertices()){
-                    cout<<"OutDegree of "<<source<<" is "<<graphDir.outdegree()<<endl;
+                    cout<<"OutDegree of "<<source<<" is "<<graphDir.outdegree(source)<<endl;
                   }
                   break;
 
@@ -240,14 +240,14 @@ int main(int argc, char const *argv[]) {
         case 7: cout<<"Enter vertex: ";
                 cin>>source;
                 if(source<graphDir.vertices()){
-                  cout<<"InDegree of "<<source<<" is "<<graphDir.indegree()<<endl;
+                  cout<<"InDegree of "<<source<<" is "<<graphDir.indegree(source)<<endl;
                 }
                 break;
 
         case 8: cout<<"Enter vertex: ";
                 cin>>source;
                 if(source<graphDir.vertices()){
-                  cout<<"OutDegree of "<<source<<" is "<<graphDir.outdegree()<<endl;
+                  cout<<"OutDegree of "<<source<<" is "<<graphDir.outdegree(source)<<endl;
                 }
                 break;
 

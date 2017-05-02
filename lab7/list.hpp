@@ -16,7 +16,8 @@ namespace cs202
         T getdata();        //getting data
         void setdata(const T &r);   //changing data
         void setnext( Node*next);    //set next
-        Node * getnext();           //get next
+        Node * getnext();
+        bool find(T val);       //get next
     };
 
   template<class T>
@@ -36,6 +37,20 @@ namespace cs202
   {
       this->next=next;
   }
+
+  template<class T>
+    bool list<T>::find(T val)
+    {
+        Node<T> *tmp=first;
+        while ( tmp!= NULL )
+
+        {
+            if(val==tmp->data) {return true;}
+            tmp = tmp->link;
+        }
+        return false;
+
+    }
 
   template<class T>
   Node<T>* Node<T>::getnext()

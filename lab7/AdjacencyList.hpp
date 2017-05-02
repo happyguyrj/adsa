@@ -18,7 +18,6 @@ using namespace cs202;
 using namespace std;
 
 namespace cs202{
-  template<typename T>
   class AdjacencyList : public GraphAdjacencyBase {
 
   private:
@@ -28,7 +27,7 @@ namespace cs202{
 
   public:
     AdjacencyList();
-    void AdjList();
+    LinearList<list<int> >  AdjList();
     ~AdjacencyList();
     void resizeAdList(int V);
     bool edgeExists(int i, int j);
@@ -41,61 +40,61 @@ namespace cs202{
     void print();
   };
 
-  template<class T>
-    AdjacencyList<T>::AdjacencyList(){
+
+    AdjacencyList  ::AdjacencyList(){
       v=0;
       e=0;
     }
 
-  template<class T>
-    void AdjacencyList<T>::AdjList(){
+
+    LinearList<list<int> > AdjacencyList  ::AdjList(){
       return AdList;
     }
 
-  template<class T>
-    AdjacencyList<T>::~AdjacencyList(){
+
+    AdjacencyList  ::~AdjacencyList(){
 
     }
 
-  template<class T>
-    void AdjacencyList<T>::resizeAdList(int V){
+
+    void AdjacencyList  ::resizeAdList(int V){
       AdList.resize(V);
       v=V;
       e=0;
     }
 
-  template<class T>
-    void AdjacencyList<T>::edgeExists(int i, int j){
+
+    bool AdjacencyList  ::edgeExists(int i, int j){
       return AdList[i].find(j);
     }
 
-  template<class T>
-    void AdjacencyList<T>::vertices(){
+
+    int AdjacencyList  ::vertices(){
       return v;
     }
 
-  template<class T>
-    void AdjacencyList<T>::edges(){
+
+    int AdjacencyList  ::edges(){
       return e;
     }
 
-  template<class T>
-    void AdjacencyList<T>::add(int i, int j){
+
+    void AdjacencyList  ::add(int i, int j){
       if(!(this->edgeExists(i,j))){
         AdList[i].append(j);
         e++;
       }
     }
 
-  template<class T>
-    void AdjacencyList<T>::remove(int i, int j){
+
+    void AdjacencyList::remove(int i, int j){
       if(this->edgeExists(i,j)){
         AdList[i].remove(j);
         e--;
     }
 
-  template<class T>
-    void AdjacencyList<T>::indegree(int i){
+
+    int AdjacencyList::indegree(int i){
       int indeg = 0;
       for (int k = 0; k < v; k++){
           if (AdList[j].find(i)) {
@@ -104,13 +103,13 @@ namespace cs202{
       }
     }
 
-  template<class T>
-    void AdjacencyList<T>::outdegree(int i){
+
+    int AdjacencyList::outdegree(int i){
       return AdList[i].length();
     }
 
-  template<class T>
-    void AdjacencyList<T>::print(){
+
+    void AdjacencyList  ::print(){
       for(int k = 0; k<v; k++){
         cout << k <<" :";
         AdList[k].print();

@@ -52,8 +52,8 @@ private:
   void bfs(void (*work)(int&),int src);
 };
 
-  
-  DirectedGraph<T>::DirectedGraph(int numVertices, char mode){
+
+  DirectedGraph  ::DirectedGraph(int numVertices, char mode){
     if(mode=='m'){
       graphmatrix.resAdjacencyMatrix(numVertices);
     }
@@ -63,7 +63,7 @@ private:
   }
 
 
-  void DirectedGraph<T>::indegree(int i){
+  void DirectedGraph  ::indegree(int i){
     if(mode=='m'){
       return graphmatrix.indegree(i);
     }
@@ -73,7 +73,7 @@ private:
   }
 
 
-  void DirectedGraph<T>::outdegree(int i){
+  void DirectedGraph  ::outdegree(int i){
     if(mode=='m'){
       return graphmatrix.outdegree(i);
     }
@@ -83,7 +83,7 @@ private:
   }
 
 
-  void DirectedGraph<T>::edgeExists(int i, int j){
+  void DirectedGraph  ::edgeExists(int i, int j){
     if(mode=='m'){
       return graphmatrix.edgeExists(i,j);
     }
@@ -93,7 +93,7 @@ private:
   }
 
 
-  void DirectedGraph<T>::vertices(){
+  void DirectedGraph  ::vertices(){
     if(mode=='m'){
       return graphmatrix.vertices();
     }
@@ -103,7 +103,7 @@ private:
   }
 
 
-  void DirectedGraph<T>::edges(){
+  void DirectedGraph  ::edges(){
     if(mode=='m'){
       return graphmatrix.edges();
     }
@@ -113,7 +113,7 @@ private:
   }
 
 
-  void DirectedGraph<T>::add(int i, int j){
+  void DirectedGraph  ::add(int i, int j){
     if(mode=='m'){
       graphmatrix.add(i,j);
     }
@@ -123,7 +123,7 @@ private:
   }
 
 
-  void DirectedGraph<T>::remove(int i, int j){
+  void DirectedGraph  ::remove(int i, int j){
     if(mode=='m'){
       graphmatrix.remove(i,j);
     }
@@ -133,7 +133,7 @@ private:
   }
 
 
-  void DirectedGraph<T>::print(){
+  void DirectedGraph  ::print(){
     if(mode=='m'){
       graphmatrix.print();
     }
@@ -143,7 +143,7 @@ private:
   }
 
 //
-//   void DirectedGraph<T>::dfs(void (*work)(int&),int src){
+//   void DirectedGraph  ::dfs(void (*work)(int&),int src){
 //
 //     int ver = this->vertices();             // number of vertices
 //     Color colour[ver];                        //colour of node
@@ -176,7 +176,7 @@ private:
 
 
 //
-//   void DirectedGraph<T>::bfs(void (*work)(int&),int src){
+//   void DirectedGraph  ::bfs(void (*work)(int&),int src){
 //
 //     int ver = this->vertices();             // number of vertices
 //     Color colour[ver];                        //colour of node
