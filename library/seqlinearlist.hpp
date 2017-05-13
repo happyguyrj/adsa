@@ -66,6 +66,8 @@ class LinearList{
 		/* Insert x after k-th element.
 		 * */
 		void  insert(const int  k, Item& x);
+
+		void  display();
 };
 
 template<class Item>
@@ -89,7 +91,11 @@ template<class Item>
 
 template<class Item>
   Item& LinearList<Item>::operator[](const int& i){
-
+		if( i > MaxSize ) {
+       cout << "Index out of bounds" <<endl;
+       return element[0];
+     }
+     return element[i];
   }
 
 template<class Item>
@@ -103,12 +109,12 @@ template<class Item>
   }
 
 template<class Item>
-  LinearList<Item>::maxSize(){
-		return maxSize;
+  int LinearList<Item>::maxSize(){
+		return MaxSize;
   }
 
 template<class Item>
-  int LinearList<Item>::returnListElement(const int k){
+  Item LinearList<Item>::returnListElement(const int k){
 		return element[k];
   }
 
@@ -127,9 +133,10 @@ template<class Item>
 
 template<class Item>
   int LinearList<Item>::search(Item& x){
+		int k;
 		if(k < MaxSize){
 			if (x == element[k-1]) {
-				return i;
+				return k;
 			}
 		}
 		else{
@@ -157,7 +164,7 @@ template<class Item>
   }
 
 template<class Item>
-  LinearList<Item>::display(){
+  void LinearList<Item>::display(){
 		cout << "Elements are: ";
 		for (int i = 0; i < len; i++) {
 			cout << element[i] << " -";
