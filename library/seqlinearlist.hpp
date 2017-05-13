@@ -11,7 +11,7 @@ class LinearList{
 	private:
 		int MaxSize;
 		Item *element;    // 1D dynamic array
-    int len;
+    int len = 0;
 
   public:
 		/* Default constructor.
@@ -79,7 +79,7 @@ template<class Item>
   LinearList<Item>::LinearList(const int& MaxListSize){
 		MaxSize = MaxListSize;
 		element = new Item[MaxListSize];
-		for (int i = 0; i < MaxSize; i++) {
+		for (int i = 0; i < MaxListSize; i++) {
 			element[i]  = 0;
 		}
   }
@@ -155,13 +155,12 @@ template<class Item>
 }
 
 template<class Item>
-  void LinearList<Item>::insert(const int k, Item& x){
-		for (int i = k+1; i < MaxSize; i++) {
+  void LinearList<Item>::insert(const int  k, Item& x){
+		for(int i=k+1; i<MaxSize; i++)
 			element[i+1] = element[i];
-		}
 		element[k+1] = x;
 		len++;
-  }
+}
 
 template<class Item>
   void LinearList<Item>::display(){

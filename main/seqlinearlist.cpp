@@ -1,20 +1,22 @@
-#include "seqLinearList.hpp"
+#include "../library/seqlinearlist.hpp"
+
+using namespace std;
 
 int main(){
   int max,len,i,num = 0,val,x,location;
 
-	cout << "Enter maximum number of numbers" <<endl;
+	cout << "Enter maximum number of numbers: ";
 	cin >>max;
 
-	cout << "\nEnter input size" <<endl;
+	cout << "\nEnter input size: " <<endl;
 	cin >> len;
 
 	LinearList<int> A(max);
 
-  cout <<"\nEnter the elements"<<endl;
+  cout <<"\nEnter the elements";
 	for(i=0;i<len;i++)
 	{
-		cout <<"\nEnter the Number " << i <<endl;
+		cout <<"\n\tEnter the Number " << i <<": " << endl;
 		cin >>  num;
 		A.insert(i-1,num);
 	}
@@ -91,4 +93,6 @@ int main(){
           return 0;
           break;
   }
+}
+  return 0;
 }
