@@ -16,6 +16,8 @@
 #ifndef LIST_HPP
 #define LIST_HPP 1
 
+#include "iostream"
+
 using namespace std;
 
 template<class T>
@@ -29,9 +31,8 @@ template<class T>
     T getdata();              //getting data
     void setdata(const T &r); //changing data
     void setnext(Node*next); //set next
-    Node* getnext();          //getting next
-    Node* gethead();
-  }
+    Node* getnext();
+  };
 
 template<class T>
   T Node<T>::getdata(){
@@ -49,13 +50,8 @@ template<class T>
   }
 
 template<class T>
-  Node<T>* Node<T>::getdata(){
+  Node<T>* Node<T>::getnext(){
     return next;
-  }
-
-template<class T>
-  Node<T>* Node<T>::gethead(){
-    return head;
   }
 
 template<class T>
@@ -72,7 +68,7 @@ template<class T>
        * Size of the created list should be zero.
        */
       list(){
-        head = NULL;
+        head=NULL;
         len = 0;
       }
       /*
@@ -108,9 +104,11 @@ template<class T>
       /*
        * Appends the given list x at the end of the current list.
        */
-      void append(list<T>& x);
+      void append(const list<T>& x);
 
-      int head();
+      int top();
+      Node<T>* gethead();
+      void print();
   };
 
 template<class T>
@@ -150,7 +148,7 @@ template<class T>
   list<T>::~list(){}
 
 template<class T>
-  void list<T>::append(list<T> &x){
+  void list<T>::append(const T& value){
     Node<T> *ptr1, *ptr2;
 
     ptr1 = new Node<T>();
@@ -166,18 +164,18 @@ template<class T>
       while (ptr2->getnext() != NULL) {
         ptr2 = ptr2->getnext();
       }
-      ptr2->setnext(ptr);
+      ptr2->setnext(ptr1);
     }
-    len++
+    len++;
   }
 
 template<class T>
-  void list<T>::length(){
+  int list<T>::length(){
     return len;
   }
 
 template<class T>
-  void list<T>::empty(){
+  bool list<T>::empty(){
     return (len == 0);
   }
 
@@ -197,7 +195,7 @@ template<class T>
     Node<T> *ptr1, *ptr2;
     ptr1 = head;
 
-    if (head->getdata()=x) {
+    if (head->getdata() == x) {
       head = head->getnext();
       delete(ptr1);
       len--;
@@ -214,7 +212,7 @@ template<class T>
   }
 
 template<class T>
-  void list<T>::append(const T& x){
+  void list<T>::append(const list<T>& x){
     Node<T>* ptr;
     list<int> y(x);
     ptr = head;
@@ -232,9 +230,26 @@ template<class T>
     }
   }
 
-  template<class T>
-  int list<T>:: top(){
-      return head->getdata();
+template<class T>
+int list<T>:: top(){
+    return head->getdata();
   }
+
+template<class T>
+  Node<T>* list<T>::gethead(){
+    return head;
+  }
+
+template<class T>
+  void list<T>::print(){
+    Node<T>* ptr;
+    ptr = head;
+    while (ptr->getnext() != NULL) {
+      cout << ptr->getdata() << " -";
+      ptr = ptr->getnext();
+    }
+    cout << ptr->getdata() << endl;
+  }
+
 
 #endif

@@ -22,6 +22,7 @@ int main(){
 	}
 
   while (1) {
+    cout << "**********Sequence Linear List*************" << endl;
     cout << "\nEnter the choice: \n";
     cout << "\t1.Display \n";
     cout << "\t2.Insert \n";

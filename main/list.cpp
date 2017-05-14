@@ -1,4 +1,5 @@
-#include "list.hpp"
+#include "../library/list.hpp"
+
 #include<iostream>
 
 using namespace std;
@@ -11,17 +12,19 @@ int main()
     int j;
     while(1)
     {
-        cout << "1. Append at the End of List\n";
-        cout << "2. Append to the start of List\n";
-        cout << "3. Print List\n";
-        cout << "4. Get Length\n";
-        cout << "5. Check if List is Empty\n";
-        cout << "6. Get Top Element\n";
-        cout << "7. Delete an element \n";
-        cout << "8. Exit\n";
+        cout << "**********List*************" << endl;
+        cout << "\nEnter the choice: \n";
+        cout << "\t1. Append at the End of List\n";
+        cout << "\t2. Append to the start of List\n";
+        cout << "\t3. Print List\n";
+        cout << "\t4. Get Length\n";
+        cout << "\t5. Check if List is Empty\n";
+        cout << "\t6. Get Top Element\n";
+        cout << "\t7. Delete an element \n";
+        cout << "\t8. Exit\n";
         cout << "\n";
 
-        cout<<"Enter Your Choice\n";
+        cout<<"Enter Your Choice: ";
         cin>>i;
 
         switch(i)
@@ -58,7 +61,7 @@ int main()
                     x.remove(j);
                     break;
 
-            case 8: break;
+            case 8: return 0;
 
             default: cout<<"\n\n Wrong choice\n";
                     break;
