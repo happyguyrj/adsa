@@ -1,3 +1,7 @@
+// Purpose: ADSA lab
+// Author: Raul Jain
+// Bugs:
+
 #ifndef SEQLINEARLIST_HPP
 #define SEQLINEARLIST_HPP
 
