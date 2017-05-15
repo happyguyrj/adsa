@@ -9,6 +9,7 @@ class GraphAdjacencyBase {
 	/* Destructor:
 	 * releases all resources acquired by the class
 	 */
+ public:
   virtual ~GraphAdjacencyBase();
 	/*
 	 * Function: edgeExists
@@ -39,6 +40,7 @@ class GraphAdjacencyBase {
 	 * Function: degree
 	 * Returns the degree of the vertex i
 	 */
-  virtual int degree(int i) = 0;
+  virtual int indegree(int i) = 0;
+	virtual int outdegree(int i) = 0;
 };
 #endif /* ifndef GRAPH_ADJACENCY_BAG */

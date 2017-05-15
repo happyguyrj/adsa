@@ -3,6 +3,22 @@
 /*
  * An interface to represent any type of Graph
  */
+
+enum Color{WHITE,GRAY,BLACK};
+
+class BFSNode{
+ public:Color col;
+   int pred;
+   int d;
+};
+
+class DFSNode{
+ public:Color col;
+   int pred;
+   int dt;
+   int ft;
+};
+
 class AbstractGraph {
  public:
   /* Destructor:
@@ -18,12 +34,12 @@ class AbstractGraph {
    * Function: edges
    * Returns the number of edges in the adjacency structure.
    */
-  virtual void edges() = 0;
+  virtual int edges() = 0;
   /*
    * Function: vertices
    * Returns the number of vertices in the adjacency structure.
    */
-  virtual void vertices() = 0;
+  virtual int vertices() = 0;
   /*
    * Function add:
    * Adds an edge between vertices i and j

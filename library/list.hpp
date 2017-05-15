@@ -109,6 +109,7 @@ template<class T>
       int top();
       Node<T>* gethead();
       void print();
+      bool find(T value);
   };
 
 template<class T>
@@ -249,6 +250,18 @@ template<class T>
       ptr = ptr->getnext();
     }
     cout << ptr->getdata() << endl;
+  }
+
+template<class T>
+  bool list<T>::find(T value){
+    Node<T> *temp = head;
+    while (temp != NULL) {
+      if (value == temp->data) {
+        return true;
+      }
+      temp = temp->next;
+    }
+    return false;
   }
 
 
