@@ -33,7 +33,7 @@ template <class T>
        * Pushes t to at the back of the queue.
        */
       void push(const T& t){
-        l.append;
+        l.append(t);
       }
       /*
        * Returns the element at the front of the queue.
