@@ -72,6 +72,7 @@ class LinearList{
 		void  insert(const int  k, Item& x);
 
 		void  display();
+		void resize(const int& n);
 };
 
 template<class Item>
@@ -174,5 +175,27 @@ template<class Item>
 		}
 		cout << endl;
   }
+
+template<class T>
+	 void LinearList<T>::resize(const int& n){
+
+		if(n > MaxSize){
+			cout<<"n > capacity_\n";
+			return ;
+		}
+
+		if(len == 0){
+			MaxSize = new T[n];
+		}
+		else
+		{
+			T *temp = new T[n];
+			for(int i=0;i<len;i++)
+				temp[i] = element[i];
+			delete[] element;
+			element = temp;
+		}
+		MaxSize = n;
+}
 
 #endif

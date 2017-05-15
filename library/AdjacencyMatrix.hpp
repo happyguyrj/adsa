@@ -1,7 +1,107 @@
 #ifndef ADJACENCY_MATRIX
 #define ADJACENCY_MATRIX 1
+
 #include "GraphAdjacencyBase.hpp"
+#include "seqlinearlist.hpp"
+
+#include <iostream>
+
+using namespace std;
+
 class AdjacencyMatrix : public GraphAdjacencyBase {
+private:
+  LinearList<LinearList<int> > AdjMatrix;
+  int v;
+  int e;
+
+public:
+  AdjacencyMatrix();
   ~AdjacencyMatrix();
+  void resizeAdjacencyMatrix(int V);
+  bool edgeExists(int i, int j);
+  int vertices();
+  int edges();
+  void add(int i, int j);
+  void remove(int i, int j);
+  int indegree(int i);
+  int outdegree(int i);
+  void print();
+};
+
+AdjacencyMatrix::AdjacencyMatrix(){
+ v=0;
+ e=0;
 }
+
+AdjacencyMatrix::~ AdjacencyMatrix(){}
+
+void  AdjacencyMatrix::resizeAdjacencyMatrix(int V){
+ AdjMatrix.resize(V);
+ for(int k=0;k<V;k++){
+   AdjMatrix[k].resize(V);
+   for (int l = 0; l < V; l++) {
+     AdjMatrix[k][l] = 0;
+   }
+ }
+}
+
+bool  AdjacencyMatrix::edgeExists(int i, int j){
+ if (AdjMatrix[i][j]==1) {
+   return true;
+ }
+ else
+   return false;
+}
+
+int  AdjacencyMatrix::vertices(){
+ return v;
+}
+
+int  AdjacencyMatrix::edges(){
+ return e;
+}
+
+void  AdjacencyMatrix::add(int i, int j){
+ if(!(this->edgeExists(i,j))){
+   AdjMatrix[i][j]=1;
+   e++;
+ }
+}
+
+void  AdjacencyMatrix::remove(int i, int j){
+ if(this->edgeExists(i,j)){
+   AdjMatrix[i][j]=0;
+   e--;
+ }
+}
+
+int  AdjacencyMatrix::indegree(int i){
+ int indeg = 0;
+ for (int k = 0; k < v; k++){
+   if (edgeExists(i,k)) {
+     indeg++;
+   }
+ }
+ return indeg;
+}
+
+int  AdjacencyMatrix::outdegree(int i){
+ int outdeg = 0;
+ for (int k = 0; k < v; k++){
+   if (edgeExists(i,k)) {
+     outdeg++;
+   }
+ }
+ return outdeg;
+}
+
+void  AdjacencyMatrix::print(){
+ for(int k = 0; k<v; k++){
+   for(int l=0; l<v; l++){
+     cout<<AdjMatrix[k][l]<<" ";
+     cout << endl;
+   }
+ }
+}
+
 #endif /* ifndef ADJACENCY_MATRIX */
