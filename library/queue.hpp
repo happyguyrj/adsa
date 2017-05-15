@@ -72,7 +72,7 @@ template <class T>
       ~queue(){}
 
       void display() {
-        x.print();
+        l.print();
       }
   };
 
