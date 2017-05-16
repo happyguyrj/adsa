@@ -18,7 +18,7 @@
 
  using namespace std;
 
-template<class Item>
+
 class UndirectedGraph : AbstractGraph {
 private:
   AdjacencyList graphlist;
@@ -50,8 +50,8 @@ private:
   void bfs(void (*work)(int&),int src);
 };
 
-template<class Item>
-  UnDirectedGraph<Item>::UnDirectedGraph(int numVertices,mode){
+
+  UnDirectedGraph::UnDirectedGraph(int numVertices,mode){
     if(mode=='m'){
       graphmatrix.resizeAdjacencyMatrix(numVertices);
     }
@@ -60,8 +60,8 @@ template<class Item>
     }
   }
 
-template<class Item>
-  int UnDirectedGraph<Item>::indegree(int i){
+
+  int UnDirectedGraph::indegree(int i){
     if(mode=='m'){
       return graphmatrix.indegree(i);
     }
@@ -70,8 +70,8 @@ template<class Item>
     }
   }
 
-template<class Item>
-  int UnDirectedGraph<Item>::outdegree(int i){
+
+  int UnDirectedGraph::outdegree(int i){
     if(mode=='m'){
       return graphmatrix.outdegree(i);
     }
@@ -80,8 +80,8 @@ template<class Item>
     }
   }
 
-template<class Item>
-  bool UnDirectedGraph<Item>::edgeExists(int i, int j){
+
+  bool UnDirectedGraph::edgeExists(int i, int j){
     if(mode=='m'){
       return graphmatrix.edgeExists(i,j);
     }
@@ -90,8 +90,8 @@ template<class Item>
     }
   }
 
-template<class Item>
-  int UnDirectedGraph<Item>::vertices(){
+
+  int UnDirectedGraph::vertices(){
     if(mode=='m'){
       return graphmatrix.vertices();
     }
@@ -100,8 +100,8 @@ template<class Item>
     }
   }
 
-template<class Item>
-  int UnDirectedGraph<Item>::edges(){
+
+  int UnDirectedGraph::edges(){
     if(mode=='m'){
       return graphmatrix.edges()/2;
     }
@@ -110,8 +110,8 @@ template<class Item>
     }
   }
 
-template<class Item>
-  void UnDirectedGraph<Item>::add(int i, int j){
+
+  void UnDirectedGraph::add(int i, int j){
     if(mode=='m'){
       graphmatrix.add(i,j);
       graphmatrix.add(j,i);
@@ -122,8 +122,8 @@ template<class Item>
     }
   }
 
-template<class Item>
-  void UnDirectedGraph<Item>::remove(int i, int j){
+
+  void UnDirectedGraph::remove(int i, int j){
     if(mode=='m'){
       graphmatrix.remove(i,j);
       graphmatrix.remove(j,i);
@@ -134,8 +134,8 @@ template<class Item>
     }
   }
 
-template<class Item>
-  void UnDirectedGraph<Item>::print(){
+
+  void UnDirectedGraph::print(){
     if(mode=='m'){
       graphmatrix.print();
     }
@@ -144,8 +144,8 @@ template<class Item>
     }
   }
 
-template<class Item>
-  void UnDirectedGraph<Item>::dfs(void (*work)(int&),int src){
+
+  void UnDirectedGraph::dfs(void (*work)(int&),int src){
 
     int ver = this->vertices();             // number of vertices
     Color colour[n];                        //colour of node
@@ -177,8 +177,8 @@ template<class Item>
   }
 
 
-template<class Item>
-  void UnDirectedGraph<Item>::bfs(void (*work)(int&),int src){
+
+  void UnDirectedGraph::bfs(void (*work)(int&),int src){
 
     int ver = this->vertices();             // number of vertices
     Color colour[n];                        //colour of node

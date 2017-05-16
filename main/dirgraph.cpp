@@ -1,4 +1,4 @@
-#include "DirectedGraph.hpp"
+#include "../library/DirectedGraph.hpp"
 
 #include <cstring>
 #include <string>
