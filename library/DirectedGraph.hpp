@@ -9,9 +9,8 @@
 #include "queue.hpp"
 #include "AdjacencyList.hpp"
 #include "AdjacencyMatrix.hpp"
-#include "AbstractGraph.hpp"
 
-class DirectedGraph : AbstractGraph {
+class DirectedGraph{
 
 private:
    AdjacencyMatrix graphmatrix;

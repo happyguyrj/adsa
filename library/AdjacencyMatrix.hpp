@@ -1,15 +1,15 @@
 #ifndef ADJACENCY_MATRIX
 #define ADJACENCY_MATRIX 1
 
-#include "GraphAdjacencyBase.hpp"
+
 #include "seqlinearlist.hpp"
 
 #include <iostream>
 
 using namespace std;
 
-template<class Item>
-class AdjacencyMatrix : public GraphAdjacencyBase {
+
+class AdjacencyMatrix{
 private:
   LinearList<LinearList<int> > AdjMatrix;
   int v;
@@ -29,17 +29,17 @@ public:
   void print();
 };
 
-template<class Item>
-AdjacencyMatrix<Item>::AdjacencyMatrix(){
+
+AdjacencyMatrix::AdjacencyMatrix(){
  v=0;
  e=0;
 }
 
-template<class Item>
-AdjacencyMatrix<Item>::~ AdjacencyMatrix(){}
 
-template<class Item>
-void  AdjacencyMatrix<Item>::resizeAdjacencyMatrix(int V){
+AdjacencyMatrix::~ AdjacencyMatrix(){}
+
+
+void  AdjacencyMatrix::resizeAdjacencyMatrix(int V){
  AdjMatrix.resize(V);
  for(int k=0;k<V;k++){
    AdjMatrix[k].resize(V);
@@ -49,8 +49,8 @@ void  AdjacencyMatrix<Item>::resizeAdjacencyMatrix(int V){
  }
 }
 
-template<class Item>
-bool  AdjacencyMatrix<Item>::edgeExists(int i, int j){
+
+bool  AdjacencyMatrix::edgeExists(int i, int j){
  if (AdjMatrix[i][j]==1) {
    return true;
  }
@@ -58,34 +58,34 @@ bool  AdjacencyMatrix<Item>::edgeExists(int i, int j){
    return false;
 }
 
-template<class Item>
-int  AdjacencyMatrix<Item>::vertices(){
+
+int  AdjacencyMatrix::vertices(){
  return v;
 }
 
-template<class Item>
-int  AdjacencyMatrix<Item>::edges(){
+
+int  AdjacencyMatrix::edges(){
  return e;
 }
 
-template<class Item>
-void  AdjacencyMatrix<Item>::add(int i, int j){
+
+void  AdjacencyMatrix::add(int i, int j){
  if(!(this->edgeExists(i,j))){
    AdjMatrix[i][j]=1;
    e++;
  }
 }
 
-template<class Item>
-void  AdjacencyMatrix<Item>::remove(int i, int j){
+
+void  AdjacencyMatrix::remove(int i, int j){
  if(this->edgeExists(i,j)){
    AdjMatrix[i][j]=0;
    e--;
  }
 }
 
-template<class Item>
-int  AdjacencyMatrix<Item>::indegree(int i){
+
+int  AdjacencyMatrix::indegree(int i){
  int indeg = 0;
  for (int k = 0; k < v; k++){
    if (edgeExists(i,k)) {
@@ -95,8 +95,8 @@ int  AdjacencyMatrix<Item>::indegree(int i){
  return indeg;
 }
 
-template<class Item>
-int  AdjacencyMatrix<Item>::outdegree(int i){
+
+int  AdjacencyMatrix::outdegree(int i){
  int outdeg = 0;
  for (int k = 0; k < v; k++){
    if (edgeExists(i,k)) {
@@ -106,8 +106,8 @@ int  AdjacencyMatrix<Item>::outdegree(int i){
  return outdeg;
 }
 
-template<class Item>
-void  AdjacencyMatrix<Item>::print(){
+
+void  AdjacencyMatrix::print(){
  for(int k = 0; k<v; k++){
    for(int l=0; l<v; l++){
      cout<<AdjMatrix[k][l]<<" ";

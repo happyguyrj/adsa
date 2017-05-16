@@ -1,4 +1,4 @@
-#include "../library/UnDirectedGraph.hpp"
+#include "../library/UndirectedGraph.hpp"
 
 #include <cstring>
 #include <string>

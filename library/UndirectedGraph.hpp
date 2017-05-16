@@ -6,20 +6,16 @@
 
 #ifndef UNDIRECTED_GRAPH
 #define UNDIRECTED_GRAPH 1
-/*
- * A class to represent an UndirectedGraph
- * Subclasses AbstractGraph
- */
- #include "stack.hpp"
- #include "queue.hpp"
- #include "AdjacencyList.hpp"
- #include "AdjacencyMatrix.hpp"
- #include "AbstractGraph.hpp"
 
- using namespace std;
+#include "stack.hpp"
+#include "queue.hpp"
+#include "AdjacencyList.hpp"
+#include "AdjacencyMatrix.hpp"
 
+using namespace std;
 
-class UndirectedGraph : AbstractGraph {
+class UndirectedGraph{
+
 private:
   AdjacencyList graphlist;
   AdjacencyMatrix graphmatrix;
@@ -34,34 +30,34 @@ private:
    * 'm' for AdjacencyMatrix
    * 'l' for AdjacencyList
    */
-  UndirectedGraph(int vertices, char mode);
-  /*
-   * Returns the degree of the vertex.
-   */
-  int indegree(int i);
-  int outdegree(int i);
-  bool edgeExists(int i, int j);
-  int vertices();
-  int edges();
-  void add(int i, int j);
-  void remove(int i, int j);
-  void print();
-  void dfs(void (*work)(int&),int src);
-  void bfs(void (*work)(int&),int src);
-};
+//    UndirectedGraph(int vertices, char mode);
+//   /*
+//    * Returns the degree of the vertex.
+//    */
+//   int indegree(int i);
+//   int outdegree(int i);
+//   bool edgeExists(int i, int j);
+//   int vertices();
+//   int edges();
+//   void add(int i, int j);
+//   void remove(int i, int j);
+//   void print();
+//   void dfs(void (*work)(int&),int src);
+//   void bfs(void (*work)(int&),int src);
+// };
 
 
-  UnDirectedGraph::UnDirectedGraph(int numVertices,mode){
+   void UnDirectedGraph(int numVertices, char mode){
     if(mode=='m'){
-      graphmatrix.resizeAdjacencyMatrix(numVertices);
+       graphmatrix.resizeAdjacencyMatrix(numVertices);
     }
     else if(mode == 'l'){
-      graphlist.resizeAdjacencyList(numVertices);
+       graphlist.resizeAdjacencyList(numVertices);
     }
   }
 
 
-  int UnDirectedGraph::indegree(int i){
+  int indegree(int i){
     if(mode=='m'){
       return graphmatrix.indegree(i);
     }
@@ -71,7 +67,7 @@ private:
   }
 
 
-  int UnDirectedGraph::outdegree(int i){
+  int outdegree(int i){
     if(mode=='m'){
       return graphmatrix.outdegree(i);
     }
@@ -81,7 +77,7 @@ private:
   }
 
 
-  bool UnDirectedGraph::edgeExists(int i, int j){
+  bool edgeExists(int i, int j){
     if(mode=='m'){
       return graphmatrix.edgeExists(i,j);
     }
@@ -91,7 +87,7 @@ private:
   }
 
 
-  int UnDirectedGraph::vertices(){
+  int vertices(){
     if(mode=='m'){
       return graphmatrix.vertices();
     }
@@ -101,7 +97,7 @@ private:
   }
 
 
-  int UnDirectedGraph::edges(){
+  int edges(){
     if(mode=='m'){
       return graphmatrix.edges()/2;
     }
@@ -111,7 +107,7 @@ private:
   }
 
 
-  void UnDirectedGraph::add(int i, int j){
+  void add(int i, int j){
     if(mode=='m'){
       graphmatrix.add(i,j);
       graphmatrix.add(j,i);
@@ -123,7 +119,7 @@ private:
   }
 
 
-  void UnDirectedGraph::remove(int i, int j){
+  void remove(int i, int j){
     if(mode=='m'){
       graphmatrix.remove(i,j);
       graphmatrix.remove(j,i);
@@ -135,7 +131,7 @@ private:
   }
 
 
-  void UnDirectedGraph::print(){
+  void print(){
     if(mode=='m'){
       graphmatrix.print();
     }
@@ -143,70 +139,71 @@ private:
       graphlist.print();
     }
   }
+};
 
-
-  void UnDirectedGraph::dfs(void (*work)(int&),int src){
-
-    int ver = this->vertices();             // number of vertices
-    Color colour[n];                        //colour of node
-
-    for(i=0;i<ver;i++){
-      colour[i] = WHITE;
-    }
-
-    stack<int> stack;
-    s.push(src);
-
-    while (!stack.empty()) {
-      int j=stack.pop();
-      if(colour[j]==WHITE){
-        work(j);
-        colour[j]=GRAY;
-
-        listnode<int>* temp = (graphlist.AdjList()[i].getfirst());
-        while (temp!=NULL) {
-          int k = temp->getdata();
-          if(colour[k]==WHITE){
-            stack.push(k);
-          }
-          temp=temp->getlink();
-        }
-        colour[i]=BLACK;
-      }
-    }
-  }
-
-
-
-  void UnDirectedGraph::bfs(void (*work)(int&),int src){
-
-    int ver = this->vertices();             // number of vertices
-    Color colour[n];                        //colour of node
-
-    for(i=0;i<ver;i++){
-      colour[i] = WHITE;
-    }
-
-    queue<int> queue;
-    s.push(src);
-
-    colour[src]=GRAY;
-    work(src);
-
-    while (!queue.empty()) {
-      int j=queue.pop();
-
-      listnode<int>* temp = (graphlist.AdjList()[j].getfirst());
-      while (temp!=NULL){
-        int k=temp->getdata();
-        if(colour[k]==WHITE){
-          queue.push(k);
-          colour[k]=GRAY;
-          work(k);
-        }
-        temp=temp->getlink();
-      }
-      colour[i]=BLACK;
-    }
-  }
+  //
+  // void dfs(void (*work)(int&),int src){
+  //
+  //   int ver = this->vertices();             // number of vertices
+  //   Color colour[n];                        //colour of node
+  //
+  //   for(i=0;i<ver;i++){
+  //     colour[i] = WHITE;
+  //   }
+  //
+  //   stack<int> stack;
+  //   s.push(src);
+  //
+  //   while (!stack.empty()) {
+  //     int j=stack.pop();
+  //     if(colour[j]==WHITE){
+  //       work(j);
+  //       colour[j]=GRAY;
+  //
+  //       listnode<int>* temp = (graphlist.AdjList()[i].getfirst());
+  //       while (temp!=NULL) {
+  //         int k = temp->getdata();
+  //         if(colour[k]==WHITE){
+  //           stack.push(k);
+  //         }
+  //         temp=temp->getlink();
+  //       }
+  //       colour[i]=BLACK;
+  //     }
+  //   }
+  // }
+  //
+  //
+  //
+  // void bfs(void (*work)(int&),int src){
+  //
+  //   int ver = this->vertices();             // number of vertices
+  //   Color colour[n];                        //colour of node
+  //
+  //   for(i=0;i<ver;i++){
+  //     colour[i] = WHITE;
+  //   }
+  //
+  //   queue<int> queue;
+  //   s.push(src);
+  //
+  //   colour[src]=GRAY;
+  //   work(src);
+  //
+  //   while (!queue.empty()) {
+  //     int j=queue.pop();
+  //
+  //     listnode<int>* temp = (graphlist.AdjList()[j].getfirst());
+  //     while (temp!=NULL){
+  //       int k=temp->getdata();
+  //       if(colour[k]==WHITE){
+  //         queue.push(k);
+  //         colour[k]=GRAY;
+  //         work(k);
+  //       }
+  //       temp=temp->getlink();
+  //     }
+  //     colour[i]=BLACK;
+  //   }
+  // }
 #endif /* ifndef UNDIRECTED_GRAPH */

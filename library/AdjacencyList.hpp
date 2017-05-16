@@ -1,14 +1,13 @@
 #ifndef ADJACENCY_LIST
 #define ADJACENCY_LIST 1
 
-#include "GraphAdjacencyBase.hpp"
 #include "list.hpp"
 #include "seqlinearlist.hpp"
 
 using namespace std;
 
-template<class Item>
-class AdjacencyList : public GraphAdjacencyBase {
+
+class AdjacencyList{
 
 private:
   LinearList< list <int> > Adjlist;
@@ -29,60 +28,60 @@ public:
   void print();
 };
 
-template<class Item>
-AdjacencyList<Item>::AdjacencyList(){
+
+AdjacencyList::AdjacencyList(){
   v=0;
   e=0;
 }
 
-template<class Item>
-LinearList < list <int> > AdjacencyList<Item>::AdjaList(){
+
+LinearList < list <int> > AdjacencyList::AdjaList(){
   return Adjlist;
 }
 
-template<class Item>
-AdjacencyList<Item>::~AdjacencyList(){}
 
-template<class Item>
-void AdjacencyList<Item>::resizeAdjacencyList(int V){
+AdjacencyList::~AdjacencyList(){}
+
+
+void AdjacencyList::resizeAdjacencyList(int V){
   //Adjlist.resize(V);
   v=V;
   e=0;
 }
 
-template<class Item>
-bool AdjacencyList<Item>::edgeExists(int i, int j){
+
+bool AdjacencyList::edgeExists(int i, int j){
   return Adjlist[i].find(j);
 }
 
-template<class Item>
-int AdjacencyList<Item>::vertices(){
+
+int AdjacencyList::vertices(){
   return v;
 }
 
-template<class Item>
-int AdjacencyList<Item>::edges(){
+
+int AdjacencyList::edges(){
   return e;
 }
 
-template<class Item>
-void AdjacencyList<Item>::add(int i, int j){
+
+void AdjacencyList::add(int i, int j){
   if(!(this->edgeExists(i,j))){
     Adjlist[i].append(j);
     e++;
   }
 }
 
-template<class Item>
-void AdjacencyList<Item>::remove(int i, int j){
+
+void AdjacencyList::remove(int i, int j){
   if(this->edgeExists(i,j)){
     Adjlist[i].remove(j);
     e--;
   }
 }
 
-template<class Item>
-int AdjacencyList<Item>::indegree(int i){
+
+int AdjacencyList::indegree(int i){
   int indeg = 0;
   for (int k = 0; k < v; k++){
       if (Adjlist[k].find(i)) {
@@ -91,13 +90,13 @@ int AdjacencyList<Item>::indegree(int i){
    }
 }
 
-template<class Item>
-int AdjacencyList<Item>::outdegree(int i){
+
+int AdjacencyList::outdegree(int i){
   return Adjlist[i].length();
 }
 
-template<class Item>
-void AdjacencyList<Item>::print(){
+
+void AdjacencyList::print(){
   for(int k = 0; k<v; k++){
     cout << k <<" :";
     Adjlist[k].print();
