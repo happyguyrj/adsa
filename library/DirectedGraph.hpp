@@ -26,39 +26,39 @@ private:
    * 'm' for AdjacencyMatrix
    * 'l' for AdjacencyList
    */
-  DirectedGraph(int numVertices, char rep);
-  /*
-   * Function: indegree
-   * Returns the indegree of a vertex
-   */
-  int indegree(int i);
+  // DirectedGraph(int numVertices, char rep);
+  // /*
+  //  * Function: indegree
+  //  * Returns the indegree of a vertex
+  //  */
+  // int indegree(int i);
   /*
    * Function: outdegree
    * Returns the outdegree of a vertex.
    */
-  int outdegree(int j);
+//   int outdegree(int j);
+//
+//   bool edgeExists(int i, int j);
+//   int vertices();
+//   int edges();
+//   void add(int i, int j);
+//   void remove(int i, int j);
+//   void print();
+//   void dfs(void (*work)(int&),int src);
+//   void bfs(void (*work)(int&),int src);
+// };
 
-  bool edgeExists(int i, int j);
-  int vertices();
-  int edges();
-  void add(int i, int j);
-  void remove(int i, int j);
-  void print();
-  void dfs(void (*work)(int&),int src);
-  void bfs(void (*work)(int&),int src);
-};
-
-DirectedGraph::DirectedGraph(int numVertices, char mode){
+DirectedGraph(int numVertices, char mode){
   if(mode=='m'){
-    graphmatrix.resAdjacencyMatrix(numVertices);
+    graphmatrix.resizeAdjacencyMatrix(numVertices);
   }
   else if(mode == 'l'){
-    graphlist.resAdjacencyList(numVertices);
+    graphlist.resizeAdjacencyList(numVertices);
   }
 }
 
 
-int DirectedGraph::indegree(int i){
+int indegree(int i){
   if(mode=='m'){
     return graphmatrix.indegree(i);
   }
@@ -68,7 +68,7 @@ int DirectedGraph::indegree(int i){
 }
 
 
-int DirectedGraph::outdegree(int i){
+int outdegree(int i){
   if(mode=='m'){
     return graphmatrix.outdegree(i);
   }
@@ -78,7 +78,7 @@ int DirectedGraph::outdegree(int i){
 }
 
 
-bool DirectedGraph::edgeExists(int i, int j){
+bool edgeExists(int i, int j){
   if(mode=='m'){
     return graphmatrix.edgeExists(i,j);
   }
@@ -88,7 +88,7 @@ bool DirectedGraph::edgeExists(int i, int j){
 }
 
 
-int DirectedGraph::vertices(){
+int vertices(){
   if(mode=='m'){
     return graphmatrix.vertices();
   }
@@ -98,7 +98,7 @@ int DirectedGraph::vertices(){
 }
 
 
-int DirectedGraph::edges(){
+int edges(){
   if(mode=='m'){
     return graphmatrix.edges();
   }
@@ -108,7 +108,7 @@ int DirectedGraph::edges(){
 }
 
 
-void DirectedGraph::add(int i, int j){
+void add(int i, int j){
   if(mode=='m'){
     graphmatrix.add(i,j);
   }
@@ -118,7 +118,7 @@ void DirectedGraph::add(int i, int j){
 }
 
 
-void DirectedGraph::remove(int i, int j){
+void remove(int i, int j){
   if(mode=='m'){
     graphmatrix.remove(i,j);
   }
@@ -128,7 +128,7 @@ void DirectedGraph::remove(int i, int j){
 }
 
 
-void DirectedGraph::print(){
+void print(){
   if(mode=='m'){
     graphmatrix.print();
   }
@@ -136,9 +136,10 @@ void DirectedGraph::print(){
     graphlist.print();
   }
 }
+};
 
 //
-//   void DirectedGraph::dfs(void (*work)(int&),int src){
+//   void dfs(void (*work)(int&),int src){
 //
 //     int ver = this->vertices();             // number of vertices
 //     Color colour[ver];                        //colour of node
@@ -171,7 +172,7 @@ void DirectedGraph::print(){
 
 
 //
-//   void DirectedGraph::bfs(void (*work)(int&),int src){
+//   void bfs(void (*work)(int&),int src){
 //
 //     int ver = this->vertices();             // number of vertices
 //     Color colour[ver];                        //colour of node
