@@ -8,6 +8,7 @@
 
 using namespace std;
 
+template<class Item>
 class AdjacencyMatrix : public GraphAdjacencyBase {
 private:
   LinearList<LinearList<int> > AdjMatrix;
@@ -28,14 +29,17 @@ public:
   void print();
 };
 
-AdjacencyMatrix::AdjacencyMatrix(){
+template<class Item>
+AdjacencyMatrix<Item>::AdjacencyMatrix(){
  v=0;
  e=0;
 }
 
-AdjacencyMatrix::~ AdjacencyMatrix(){}
+template<class Item>
+AdjacencyMatrix<Item>::~ AdjacencyMatrix(){}
 
-void  AdjacencyMatrix::resizeAdjacencyMatrix(int V){
+template<class Item>
+void  AdjacencyMatrix<Item>::resizeAdjacencyMatrix(int V){
  AdjMatrix.resize(V);
  for(int k=0;k<V;k++){
    AdjMatrix[k].resize(V);
@@ -45,7 +49,8 @@ void  AdjacencyMatrix::resizeAdjacencyMatrix(int V){
  }
 }
 
-bool  AdjacencyMatrix::edgeExists(int i, int j){
+template<class Item>
+bool  AdjacencyMatrix<Item>::edgeExists(int i, int j){
  if (AdjMatrix[i][j]==1) {
    return true;
  }
@@ -53,29 +58,34 @@ bool  AdjacencyMatrix::edgeExists(int i, int j){
    return false;
 }
 
-int  AdjacencyMatrix::vertices(){
+template<class Item>
+int  AdjacencyMatrix<Item>::vertices(){
  return v;
 }
 
-int  AdjacencyMatrix::edges(){
+template<class Item>
+int  AdjacencyMatrix<Item>::edges(){
  return e;
 }
 
-void  AdjacencyMatrix::add(int i, int j){
+template<class Item>
+void  AdjacencyMatrix<Item>::add(int i, int j){
  if(!(this->edgeExists(i,j))){
    AdjMatrix[i][j]=1;
    e++;
  }
 }
 
-void  AdjacencyMatrix::remove(int i, int j){
+template<class Item>
+void  AdjacencyMatrix<Item>::remove(int i, int j){
  if(this->edgeExists(i,j)){
    AdjMatrix[i][j]=0;
    e--;
  }
 }
 
-int  AdjacencyMatrix::indegree(int i){
+template<class Item>
+int  AdjacencyMatrix<Item>::indegree(int i){
  int indeg = 0;
  for (int k = 0; k < v; k++){
    if (edgeExists(i,k)) {
@@ -85,7 +95,8 @@ int  AdjacencyMatrix::indegree(int i){
  return indeg;
 }
 
-int  AdjacencyMatrix::outdegree(int i){
+template<class Item>
+int  AdjacencyMatrix<Item>::outdegree(int i){
  int outdeg = 0;
  for (int k = 0; k < v; k++){
    if (edgeExists(i,k)) {
@@ -95,7 +106,8 @@ int  AdjacencyMatrix::outdegree(int i){
  return outdeg;
 }
 
-void  AdjacencyMatrix::print(){
+template<class Item>
+void  AdjacencyMatrix<Item>::print(){
  for(int k = 0; k<v; k++){
    for(int l=0; l<v; l++){
      cout<<AdjMatrix[k][l]<<" ";

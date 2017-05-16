@@ -12,6 +12,7 @@ class BFSNode{
    int d;
 };
 
+
 class DFSNode{
  public:Color col;
    int pred;

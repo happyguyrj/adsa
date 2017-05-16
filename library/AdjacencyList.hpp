@@ -7,6 +7,7 @@
 
 using namespace std;
 
+template<class Item>
 class AdjacencyList : public GraphAdjacencyBase {
 
 private:
@@ -28,50 +29,60 @@ public:
   void print();
 };
 
-AdjacencyList::AdjacencyList(){
+template<class Item>
+AdjacencyList<Item>::AdjacencyList(){
   v=0;
   e=0;
 }
 
-LinearList < list <int> > AdjacencyList::AdjaList(){
+template<class Item>
+LinearList < list <int> > AdjacencyList<Item>::AdjaList(){
   return Adjlist;
 }
 
-AdjacencyList::~AdjacencyList(){}
+template<class Item>
+AdjacencyList<Item>::~AdjacencyList(){}
 
-void AdjacencyList::resizeAdjacencyList(int V){
+template<class Item>
+void AdjacencyList<Item>::resizeAdjacencyList(int V){
   //Adjlist.resize(V);
   v=V;
   e=0;
 }
 
-bool AdjacencyList::edgeExists(int i, int j){
+template<class Item>
+bool AdjacencyList<Item>::edgeExists(int i, int j){
   return Adjlist[i].find(j);
 }
 
-int AdjacencyList::vertices(){
+template<class Item>
+int AdjacencyList<Item>::vertices(){
   return v;
 }
 
-int AdjacencyList::edges(){
+template<class Item>
+int AdjacencyList<Item>::edges(){
   return e;
 }
 
-void AdjacencyList::add(int i, int j){
+template<class Item>
+void AdjacencyList<Item>::add(int i, int j){
   if(!(this->edgeExists(i,j))){
     Adjlist[i].append(j);
     e++;
   }
 }
 
-void AdjacencyList::remove(int i, int j){
+template<class Item>
+void AdjacencyList<Item>::remove(int i, int j){
   if(this->edgeExists(i,j)){
     Adjlist[i].remove(j);
     e--;
   }
 }
 
-int AdjacencyList::indegree(int i){
+template<class Item>
+int AdjacencyList<Item>::indegree(int i){
   int indeg = 0;
   for (int k = 0; k < v; k++){
       if (Adjlist[k].find(i)) {
@@ -80,11 +91,13 @@ int AdjacencyList::indegree(int i){
    }
 }
 
-int AdjacencyList::outdegree(int i){
+template<class Item>
+int AdjacencyList<Item>::outdegree(int i){
   return Adjlist[i].length();
 }
 
-void AdjacencyList::print(){
+template<class Item>
+void AdjacencyList<Item>::print(){
   for(int k = 0; k<v; k++){
     cout << k <<" :";
     Adjlist[k].print();
