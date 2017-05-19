@@ -7,7 +7,7 @@
 #include <iostream>
 using namespace std;
 
-#include "seqLinearList.hpp"
+#include "seqlinearlist.hpp"
 #include "list.hpp"
 #include "GraphAdjacencyBase.hpp"
 

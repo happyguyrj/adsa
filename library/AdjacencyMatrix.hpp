@@ -2,7 +2,7 @@
 #define ADJACENCY_MATRIX 1
 
 #include "GraphAdjacencyBase.hpp"
-#include "seqLinearList.hpp"
+#include "seqlinearlist.hpp"
 
 #include <iostream>
 using namespace std;
