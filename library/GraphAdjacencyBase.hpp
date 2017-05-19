@@ -10,12 +10,12 @@ class GraphAdjacencyBase {
 	 * releases all resources acquired by the class
 	 */
  public:
-  virtual ~GraphAdjacencyBase();
+  virtual ~GraphAdjacencyBase(){	}
 	/*
 	 * Function: edgeExists
 	 * Returns true if an edge exists between vertices i and j, false otherwise.
 	 */
-  virtual bool edgeExits(int i, int j) = 0;
+  virtual bool edgeExists(int i, int j) = 0;
 	/*
 	 * Function: vertices
 	 * Returns the number of vertices in the adjacency structure.

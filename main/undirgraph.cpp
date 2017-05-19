@@ -1,8 +1,10 @@
-#include "../library/UndirectedGraph.hpp"
-
 #include <cstring>
 #include <string>
 #include <fstream>
+
+#include "../library/UndirectedGraph.hpp"
+
+//using namespace std;
 
 void work(int& i){
   cout<<" "<<i<<" ";
@@ -10,6 +12,8 @@ void work(int& i){
 
 int main(int argc, char const *argv[]) {
   int number=0, val;
+
+  UnDirectedGraph graphDir(number,mode);
 
   if (argc==3) {
     string filename = argv[1];
@@ -27,7 +31,7 @@ int main(int argc, char const *argv[]) {
       number--;
       myfile.close();
 
-      UnDirectedGraph graphDir(number,mode);
+      //UnDirectedGraph graphDir(number,mode);
       myfile.open(filename.c_str());
 
       for(int k=0;k<number;k++){
@@ -124,21 +128,21 @@ int main(int argc, char const *argv[]) {
                   }
                   break;
 
-          case 9: cout<<"Enter vertex: ";
-                  cin>>source;
-                  if(source<graphDir.vertices()){
-                    cout<<"BFS of "<<source<<" is "<<endl;
-                    graphDir.bfs(work,source);
-                  }
-                  break;
-
-          case 10: cout<<"Enter vertex: ";
-                  cin>>source;
-                  if(source<graphDir.vertices()){
-                    cout<<"DFS of "<<source<<" is "<<endl;
-                    graphDir.dfs(work,source);
-                  }
-                  break;
+          // case 9: cout<<"Enter vertex: ";
+          //         cin>>source;
+          //         if(source<graphDir.vertices()){
+          //           cout<<"BFS of "<<source<<" is "<<endl;
+          //           graphDir.bfs(work,source);
+          //         }
+          //         break;
+          //
+          // case 10: cout<<"Enter vertex: ";
+          //         cin>>source;
+          //         if(source<graphDir.vertices()){
+          //           cout<<"DFS of "<<source<<" is "<<endl;
+          //           graphDir.dfs(work,source);
+          //         }
+          //         break;
 
           case 11: return 0;
 
@@ -151,10 +155,10 @@ int main(int argc, char const *argv[]) {
   else if(argc==2){
     char mode=argv[1][0];
 
+    //UnDirectedGraph graphDir(number, mode);
+
     cout<<"Enter number of vertices: ";
     cin>>number;
-
-    UnDirectedGraph graphDir(number, mode);
 
     cout<<"Enter Adjacency Matrix: "<<endl;
     for(int k=0;k<number;k++){
@@ -251,21 +255,21 @@ int main(int argc, char const *argv[]) {
                 }
                 break;
 
-        case 9: cout<<"Enter vertex: ";
-                cin>>source;
-                if(source<graphDir.vertices()){
-                  cout<<"BFS of "<<source<<" is "<<endl;
-                  graphDir.bfs(work,source);
-                }
-                break;
-
-        case 10: cout<<"Enter vertex: ";
-                cin>>source;
-                if(source<graphDir.vertices()){
-                  cout<<"DFS of "<<source<<" is "<<endl;
-                  graphDir.dfs(work,source);
-                }
-                break;
+        // case 9: cout<<"Enter vertex: ";
+        //         cin>>source;
+        //         if(source<graphDir.vertices()){
+        //           cout<<"BFS of "<<source<<" is "<<endl;
+        //           graphDir.bfs(work,source);
+        //         }
+        //         break;
+        //
+        // case 10: cout<<"Enter vertex: ";
+        //         cin>>source;
+        //         if(source<graphDir.vertices()){
+        //           cout<<"DFS of "<<source<<" is "<<endl;
+        //           graphDir.dfs(work,source);
+        //         }
+        //         break;
 
         case 11: return 0;
 

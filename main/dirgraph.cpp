@@ -20,7 +20,7 @@ int main(int argc, char const *argv[]) {
     myfile.open(filename.c_str());
 
     if (myfile.is_open()) {
-      while (myfile.is_open()) {
+      while (!myfile.eof()) {
         getline(myfile,line);
         number++;
       }
@@ -45,7 +45,7 @@ int main(int argc, char const *argv[]) {
 
       int c,source,dest;
       while (1) {
-        cout<<"Choose operation to be performed: ";
+        cout<<"\nChoose operation to be performed: \n";
         cout<<"\t1. Add an edge between given vertices"<<endl;
         cout<<"\t2. Remove an edge between given vertices"<<endl;
         cout<<"\t3. Check if an edge exists between given vertices"<<endl;
@@ -124,21 +124,21 @@ int main(int argc, char const *argv[]) {
                   }
                   break;
 
-          case 9: cout<<"Enter vertex: ";
-                  cin>>source;
-                  if(source<graphDir.vertices()){
-                    cout<<"BFS of "<<source<<" is "<<endl;
-                    graphDir.bfs(work,source);
-                  }
-                  break;
-
-          case 10: cout<<"Enter vertex: ";
-                  cin>>source;
-                  if(source<graphDir.vertices()){
-                    cout<<"DFS of "<<source<<" is "<<endl;
-                    graphDir.dfs(work,source);
-                  }
-                  break;
+          // case 9: cout<<"Enter vertex: ";
+          //         cin>>source;
+          //         if(source<graphDir.vertices()){
+          //           cout<<"BFS of "<<source<<" is "<<endl;
+          //           graphDir.bfs(work,source);
+          //         }
+          //         break;
+          //
+          // case 10: cout<<"Enter vertex: ";
+          //         cin>>source;
+          //         if(source<graphDir.vertices()){
+          //           cout<<"DFS of "<<source<<" is "<<endl;
+          //           graphDir.dfs(work,source);
+          //         }
+          //         break;
 
           case 11: return 0;
 
@@ -165,6 +165,7 @@ int main(int argc, char const *argv[]) {
         }
       }
     }
+    
     cout<<endl;
     cout<<"Inserted graph is:"<<endl;
     graphDir.print();
@@ -172,7 +173,7 @@ int main(int argc, char const *argv[]) {
 
     int c,source,dest;
     while (1) {
-      cout<<"Choose operation to be performed: ";
+      cout<<"Choose operation to be performed: "<<endl;
       cout<<"\t1. Add an edge between given vertices"<<endl;
       cout<<"\t2. Remove an edge between given vertices"<<endl;
       cout<<"\t3. Check if an edge exists between given vertices"<<endl;
@@ -251,21 +252,21 @@ int main(int argc, char const *argv[]) {
                 }
                 break;
 
-        case 9: cout<<"Enter vertex: ";
-                cin>>source;
-                if(source<graphDir.vertices()){
-                  cout<<"BFS of "<<source<<" is "<<endl;
-                  graphDir.bfs(work,source);
-                }
-                break;
-
-        case 10: cout<<"Enter vertex: ";
-                cin>>source;
-                if(source<graphDir.vertices()){
-                  cout<<"DFS of "<<source<<" is "<<endl;
-                  graphDir.dfs(work,source);
-                }
-                break;
+        // case 9: cout<<"Enter vertex: ";
+        //         cin>>source;
+        //         if(source<graphDir.vertices()){
+        //           cout<<"BFS of "<<source<<" is "<<endl;
+        //           graphDir.bfs(work,source);
+        //         }
+        //         break;
+        //
+        // case 10: cout<<"Enter vertex: ";
+        //         cin>>source;
+        //         if(source<graphDir.vertices()){
+        //           cout<<"DFS of "<<source<<" is "<<endl;
+        //           graphDir.dfs(work,source);
+        //         }
+        //         break;
 
         case 11: return 0;
 

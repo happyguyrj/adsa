@@ -1,107 +1,121 @@
+// Purpose: ADSA lab
+// Author: Raul Jain
+// Date of Creation: 30 april 2017
+//type: library file
+// Bugs:
+
+#include <iostream>
+using namespace std;
+
+#include "seqLinearList.hpp"
+#include "list.hpp"
+#include "GraphAdjacencyBase.hpp"
+
 #ifndef ADJACENCY_LIST
 #define ADJACENCY_LIST 1
 
-#include "list.hpp"
-#include "seqlinearlist.hpp"
 
 using namespace std;
 
+  class AdjacencyList : public GraphAdjacencyBase {
 
-class AdjacencyList{
+  private:
+    LinearList< list<int> > AdList;
+    int v;
+    int e;
 
-private:
-  LinearList< list <int> > Adjlist;
-  int v, e;
-
-public:
-  AdjacencyList();
-  LinearList< list <int> >  AdjaList();
-  ~AdjacencyList();
-  void resizeAdjacencyList(int V);
-  bool edgeExists(int i, int j);
-  int vertices();
-  int edges();
-  void add(int i, int j);
-  void remove(int i, int j);
-  int indegree(int i);
-  int outdegree(int i);
-  void print();
-};
-
-
-AdjacencyList::AdjacencyList(){
-  v=0;
-  e=0;
-}
+  public:
+    AdjacencyList();
+    LinearList< list <int> >  AdjList();
+    ~AdjacencyList();
+    void resAdjacencyList(int V);
+    bool edgeExists(int i, int j);
+    int vertices();
+    int edges();
+    void add(int i, int j);
+    void remove(int i, int j);
+    int indegree(int i);
+    int outdegree(int i);
+    void print();
+  };
 
 
-LinearList < list <int> > AdjacencyList::AdjaList(){
-  return Adjlist;
-}
+    AdjacencyList::AdjacencyList(){
+      v=0;
+      e=0;
+    }
 
 
-AdjacencyList::~AdjacencyList(){}
+    LinearList< list <int> > AdjacencyList::AdjList(){
+      return AdList;
+    }
 
 
-void AdjacencyList::resizeAdjacencyList(int V){
-  //Adjlist.resize(V);
-  v=V;
-  e=0;
-}
+    AdjacencyList::~AdjacencyList(){
+
+    }
 
 
-bool AdjacencyList::edgeExists(int i, int j){
-  return Adjlist[i].find(j);
-}
+    void AdjacencyList::resAdjacencyList(int V){
+      AdList.resize(V);
+      v=V;
+      e=0;
+    }
 
 
-int AdjacencyList::vertices(){
-  return v;
-}
+    bool AdjacencyList::edgeExists(int i, int j){
+      return AdList[i].find(j);
+    }
 
 
-int AdjacencyList::edges(){
-  return e;
-}
+    int AdjacencyList::vertices(){
+      return v;
+    }
 
 
-void AdjacencyList::add(int i, int j){
-  if(!(this->edgeExists(i,j))){
-    Adjlist[i].append(j);
-    e++;
-  }
-}
+    int AdjacencyList::edges(){
+      return e;
+    }
 
 
-void AdjacencyList::remove(int i, int j){
-  if(this->edgeExists(i,j)){
-    Adjlist[i].remove(j);
-    e--;
-  }
-}
-
-
-int AdjacencyList::indegree(int i){
-  int indeg = 0;
-  for (int k = 0; k < v; k++){
-      if (Adjlist[k].find(i)) {
-        indeg++;
+    void AdjacencyList::add(int i, int j){
+      if(!(this->edgeExists(i,j))){
+        AdList[i].append(j);
+        e++;
       }
-   }
-}
+    }
 
 
-int AdjacencyList::outdegree(int i){
-  return Adjlist[i].length();
-}
+    void AdjacencyList::remove(int i, int j){
+      if(this->edgeExists(i,j)){
+        AdList[i].remove(j);
+        e--;
+      }
+    }
 
 
-void AdjacencyList::print(){
-  for(int k = 0; k<v; k++){
-    cout << k <<" :";
-    Adjlist[k].print();
-    cout << endl;
-  }
-}
+    int AdjacencyList::indegree(int i){
+      int indeg = 0;
+      for (int k = 0; k < v; k++){
+          if (AdList[k].find(i)) {
+            indeg++;
+          }
+      }
+    }
+
+
+    int AdjacencyList::outdegree(int i){
+      return AdList[i].length();
+    }
+
+
+    void AdjacencyList::print(){
+      for(int k = 0; k<v; k++){
+        cout << k <<" :";
+        AdList[k].print();
+        cout << endl;
+      }
+    }
+
 
 #endif /* ifndef ADJACENCY_LIST */

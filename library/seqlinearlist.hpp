@@ -185,13 +185,14 @@ template<class T>
 		}
 
 		if(len == 0){
-			MaxSize = new T[n];
+			MaxSize = n;
 		}
 		else
 		{
 			T *temp = new T[n];
-			for(int i=0;i<len;i++)
+			for(int i=0;i<len;i++){
 				temp[i] = element[i];
+			}
 			delete[] element;
 			element = temp;
 		}

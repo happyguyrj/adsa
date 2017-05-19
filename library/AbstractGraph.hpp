@@ -1,23 +1,29 @@
+// Purpose: ADSA lab
+// Author: Raul Jain
+// Date of Creation: 30 april 2017
+//type: library file
+// Bugs:
+
 #ifndef ABSTRACT_GRAPH
 #define ABSTRACT_GRAPH 1
 /*
  * An interface to represent any type of Graph
  */
-
 enum Color{WHITE,GRAY,BLACK};
 
-class BFSNode{
- public:Color col;
-   int pred;
-   int d;
+class BFSNode
+{
+  public:Color col;
+          int pred;
+          int d;
 };
 
-
-class DFSNode{
- public:Color col;
-   int pred;
-   int dt;
-   int ft;
+class DFSNode
+{
+  public:Color col;
+          int pred;
+          int dt;
+          int ft;
 };
 
 class AbstractGraph {
@@ -30,7 +36,7 @@ class AbstractGraph {
    * Function: edgeExists
    * Returns true if an edge exists between vertices i and j, false otherwise.
    */
-  virtual bool edgeExits(int i, int j) = 0;
+  virtual bool edgeExists(int i, int j) = 0;
   /*
    * Function: edges
    * Returns the number of edges in the adjacency structure.
